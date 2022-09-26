@@ -1,0 +1,45 @@
+header {
+	color: #ffffff;
+	text-align: center;
+	padding: 10px;
+	font-size: 1.4em;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#save-button {
+	margin: 5px;
+}
+
+.form-container {
+	background-color: lightblue;
+	margin: 10px;
+	padding: 10px;
+}
+
+.notes-container {
+	margin: 10px;
+	padding: 10px;
+}
+
+#note-input {
+	height: 240px;
+	width: 400px;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: lightgray;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: lightgray;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: lightgray;
+}
