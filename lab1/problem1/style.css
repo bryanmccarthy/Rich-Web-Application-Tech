@@ -1,0 +1,33 @@
+.flex-container {
+	display:	flex;
+	border:  1px solid black;
+	width: 100%;
+}
+
+.box {
+	display: flex;
+	width:  25%;
+	border: 1px dashed green;
+}
+
+@media (max-width: 720px) {
+	.flex-container {
+		flex-wrap: wrap;
+	}
+
+  .box {
+    width: 48.5%;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 360px) {
+  .flex-container {
+    flex-direction: column;
+  }
+
+  .box {
+  	width: 100%;
+  	flex-direction: column;
+  }
+}
