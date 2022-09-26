@@ -1,5 +1,4 @@
 header {
-	color: #ffffff;
 	text-align: center;
 	padding: 10px;
 	font-size: 1.4em;
@@ -16,7 +15,6 @@ form {
 }
 
 .form-container {
-	background-color: lightblue;
 	margin: 10px;
 	padding: 10px;
 }
@@ -24,11 +22,39 @@ form {
 .notes-container {
 	margin: 10px;
 	padding: 10px;
+	justify-content: center;
+  align-items: center;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 #note-input {
-	height: 240px;
+	height: 140px;
 	width: 400px;
+}
+
+.note {
+	width: 300px;
+	height: 180px;
+	margin: 5px;
+	padding-right: 5px;
+	overflow-wrap: break-word;
+}
+
+.note.blue {
+  background-color: lightblue;
+}
+
+.note.orange {
+  background-color: orange;
+}
+
+.note.green {
+  background-color: lightgreen;
+}
+
+.note.pink {
+  background-color: lightpink;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -42,4 +68,22 @@ form {
 
 ::-ms-input-placeholder { /* Microsoft Edge */
   color: lightgray;
+}
+
+@media (max-width: 700px) {
+  .note {
+  	width: 80%;
+  }
+}
+
+@media (max-width: 450px) {
+  #note-input {
+  	width:  90%;
+  }
+}
+
+@media (max-width: 360px) {
+  .note {
+  	width: 100%;
+  }
 }
