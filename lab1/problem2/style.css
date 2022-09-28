@@ -80,6 +80,14 @@ form {
   cursor: pointer;
 }
 
+.note .edit-color-selector {
+  position: absolute;
+  bottom: 0;
+  right: 100px;
+  margin: 3px;
+  cursor: pointer;
+}
+
 @media (max-width: 700px) {
   .note {
   	width: 80%;
