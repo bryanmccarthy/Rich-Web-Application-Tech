@@ -10,8 +10,13 @@ form {
 	align-items: center;
 }
 
-#save-button {
+#add-button {
 	margin: 5px;
+  cursor: pointer;
+}
+
+#color-selector {
+  cursor: pointer;
 }
 
 .form-container {
@@ -39,6 +44,8 @@ form {
 	margin: 5px;
 	padding-right: 5px;
 	overflow-wrap: break-word;
+  position: relative;
+  cursor: initial;
 }
 
 .note.blue {
@@ -57,17 +64,20 @@ form {
   background-color: lightpink;
 }
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: lightgray;
-  opacity: 1; /* Firefox */
+.note .edit-note {
+  position: absolute;
+  bottom: 0;
+  right: 55px;
+  margin: 2px;
+  cursor: pointer;
 }
 
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: lightgray;
-}
-
-::-ms-input-placeholder { /* Microsoft Edge */
-  color: lightgray;
+.note .delete-note {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 2px;
+  cursor: pointer;
 }
 
 @media (max-width: 700px) {
