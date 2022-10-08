@@ -37,12 +37,34 @@ for (let i = 0; i < p.length; i++){
     p[i].innerText = "This website is now about cats.";
 }
 
-const buttons = document.getElementsByTagName("button");
-for (let i = 0; i < buttons.length; i++) {
-  buttons[i].innerText = "CAT";
-  buttons[i].style.backgroundColor = "red";
+//href link for every a element is changed to a cat video
+const a = document.getElementsByTagName("a");
+for (let i = 0; i < a.length; i++){
+    a[i].href = "https://www.youtube.com/watch?v=MUws5oXXYa8";
 }
 
+//button elements changed to say CAT
+const buttons = document.getElementsByTagName("button");
+for (let i = 0; i < buttons.length; i++) {
+  buttons[i].innerText = "Don't press me";
+  buttons[i].style.backgroundColor = "lightgreen";
+  buttonListener(buttons[i]);
+}
+
+//all elements 
+const elements = document.getElementsByTagName("*");
+
+//button pressed clears the page and says cat
+function buttonListener(button) {
+  button.addEventListener('click', e => {
+    e.stopPropagation();
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].innerText = "cat";
+    }
+  });
+}
+
+//list elements show random cat breeds
 const lists = document.getElementsByTagName("li");
 for (let i = 0; i < lists.length; i++) {
   const catBreed = Math.floor(Math.random() * catBreeds.length);
