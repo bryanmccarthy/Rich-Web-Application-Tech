@@ -45,7 +45,7 @@ for (let i = 0; i < a.length; i++) {
     a[i].href = catVideo;
 }
 
-//button elements changed to say CAT
+//button elements changed to say dont press me
 const buttons = document.getElementsByTagName("button");
 for (let i = 0; i < buttons.length; i++) {
   buttons[i].innerText = "Don't press me";
