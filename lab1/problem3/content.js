@@ -17,7 +17,9 @@ let catBreeds = [
   "British Shortahir",
   "Ragdoll",
   "Exotic Shorthair"
-]
+];
+
+let catVideo = "https://www.youtube.com/watch?v=MUws5oXXYa8";
 
 //reverse through array of images
 //getting random image from the array we created before (we use math.floor and math.random to grab a random index in the array)
@@ -28,19 +30,19 @@ for(let i = 0; i < imgs.length; i++) {
 }
 //do the same for h1 elements
 const headers = document.getElementsByTagName("h1");
-for (let i = 0; i < headers.length; i++){
+for (let i = 0; i < headers.length; i++) {
     headers[i].innerText = "Cats are awesome.";
 }
 //do the same for p elements
 const p = document.getElementsByTagName("p");
-for (let i = 0; i < p.length; i++){
+for (let i = 0; i < p.length; i++) {
     p[i].innerText = "This website is now about cats.";
 }
 
 //href link for every a element is changed to a cat video
 const a = document.getElementsByTagName("a");
-for (let i = 0; i < a.length; i++){
-    a[i].href = "https://www.youtube.com/watch?v=MUws5oXXYa8";
+for (let i = 0; i < a.length; i++) {
+    a[i].href = catVideo;
 }
 
 //button elements changed to say CAT
@@ -60,6 +62,9 @@ function buttonListener(button) {
     e.stopPropagation();
     for (let i = 0; i < elements.length; i++) {
       elements[i].innerText = "cat";
+      elements[i].style.color = "pink";
+      elements[i].style.textAlign = "center";
+      elements[i].style.fontSize = "200px";
     }
   });
 }
