@@ -10,7 +10,8 @@ const form = {
 const notes = document.querySelector('.notes-container');
 const colors = ['blue', 'orange', 'green', 'pink'];
 
-function addNote() {
+// Add note element with content and append edit and delete elements
+const addNote = () => {
 	let text = note.noteText.value;
 	let noteBody = document.createElement('div');
   let editColorSelector = document.createElement('select');
@@ -44,32 +45,33 @@ function addNote() {
   deleteButtonListener(deleteBtn);
 }
 
-function editColorSelectorListener(editColorSelector) {
+// Selector listener for the select element on each note
+const editColorSelectorListener = (editColorSelector) => {
   editColorSelector.addEventListener('change', e => {
     e.stopPropagation();
     changeNoteColor(e, editColorSelector.value);
   });
 }
 
-function changeNoteColor(e, color) {
+// Remove any existing color from classList and add the new color
+const changeNoteColor = (e, color) => {
   let note = e.target.parentNode;
   note.classList.remove('blue', 'orange', 'green', 'pink') // Remove existing color from classList
   note.classList.add(color);
-  console.log(note)
 }
 
-function editButtonListener(editBtn) {
+// Edit button listener for editBtn that is appended to each note
+const editButtonListener = (editBtn) => {
   editBtn.addEventListener('click', e => {
     e.stopPropagation();
     editNote(e);
   });
 }
 
-function editNote(e) {
+// Edit note button toggles the note element to be editable
+const editNote = (e) => {
   let note = e.target.parentNode;
   note.toggleAttribute('contenteditable');
-
-  console.log(note)
 
   let editBtnText = e.target;
   if (editBtnText.innerHTML === "edit") {
@@ -79,18 +81,21 @@ function editNote(e) {
   }
 }
 
-function deleteButtonListener(deleteBtn) {
+// Delete button listener for deleteBtn that is appended to each note
+const deleteButtonListener = (deleteBtn) => {
   deleteBtn.addEventListener('click', e => {
     e.stopPropagation();
     deleteNote(e);
   });
 }
 
-function deleteNote(e) {
+// Removes the note (child of notes parent)
+const deleteNote = (e) => {
   let note = e.target.parentNode;
   note.parentNode.removeChild(note);
 }
 
+// Only create the addEventListener if the addBtn exists
 if(form.addBtn) {
 	form.addBtn.addEventListener('click', e => {
 	  e.preventDefault();  
@@ -98,7 +103,8 @@ if(form.addBtn) {
 	})
 }
 
-function getColorOrder(currentColor) {
+// Get the colors that are not the current notes color
+const getColorOrder = (currentColor) => {
   let colorOrder = []
   for (let colorIdx in colors) {
     if (colors[colorIdx] != currentColor) {
