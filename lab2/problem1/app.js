@@ -5,18 +5,19 @@ const form = {
   email: document.querySelector('#email'),
 }
 
+// Add contact submitted
+// Validation
 const addContactSubmit = () => {
-  console.log("add contact pressed");
+  const validName = validateName();
   const validEmail = validateEmail();
-  if (validEmail) {
-    console.log(validEmail);
+
+  if (validName && validEmail) {
+    console.log("Valid");
+    addContactToTable();
   } else {
     console.log("Invalid");
   }
-
-  addContactToTable();
-
-  document.getElementById("form").reset();
+  document.getElementById("form").reset(); // Clear form entry
 }
 
 const addContactToTable = () => {
@@ -32,10 +33,17 @@ if(form.addContact) {
   })
 }
 
+const validateName = () => {
+  console.log("validating name");
+  name = form.name.value;
+  return name.match(
+      /^[a-zA-Z\s]*$/
+    );
+}
+
 const validateEmail = () => {
   console.log("validating email");
   email = form.email.value;
-  console.log(email);
   return email.match(
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
