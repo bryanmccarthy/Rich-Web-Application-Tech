@@ -1,9 +1,49 @@
-h1 {
-  background-color: lightblue;
-  color: white;
-  text-align: center;
+.heading {
+  display: flex;
+  justify-content: center;
 }
 
 .form-container {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.form-container form {
+  background-color: lightblue;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+.search-container label {
+  margin-right: 1vw;
+}
+
+.table-heading {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.table-container {
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+}
+
+.table {
+  text-align: left;
+}
+
+.table thead tr {
+  background-color: lightblue;
+}
+
+.table tbody {
+  background-color: lightgrey;
 }
