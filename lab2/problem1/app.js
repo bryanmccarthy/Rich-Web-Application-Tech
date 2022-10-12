@@ -9,15 +9,16 @@ const form = {
 // Validation
 const addContactSubmit = () => {
   const validName = validateName();
+  const validMobile = validateMobile();
   const validEmail = validateEmail();
 
-  if (validName && validEmail) {
+  if (validName && validMobile && validEmail) {
     console.log("Valid");
     addContactToTable();
+    document.getElementById("form").reset(); // Clear form entry
   } else {
     console.log("Invalid");
   }
-  document.getElementById("form").reset(); // Clear form entry
 }
 
 const addContactToTable = () => {
@@ -38,6 +39,14 @@ const validateName = () => {
   name = form.name.value;
   return name.match(
       /^[a-zA-Z\s]*$/
+    );
+}
+
+const validateMobile = () => {
+  console.log("validating mobile");
+  mobile = form.mobile.value;
+  return mobile.match(
+      /^\d+/
     );
 }
 
