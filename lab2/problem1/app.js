@@ -28,9 +28,14 @@ const addContactSubmit = () => {
 }
 
 const addContactToTable = () => {
-  console.log(form.name.value);
-  console.log(form.mobile.value);
-  console.log(form.email.value);
+  let newContact = tableItems.table.insertRow(tableItems.table.rows.length);
+  let newContactName = newContact.insertCell(0);
+  let newContactMobile = newContact.insertCell(1);
+  let newContactEmail = newContact.insertCell(2);
+
+  newContactName.innerHTML = form.name.value;
+  newContactMobile.innerHTML = form.mobile.value;
+  newContactEmail.innerHTML = form.email.value;
 }
 
 // Event listener for add contact button
