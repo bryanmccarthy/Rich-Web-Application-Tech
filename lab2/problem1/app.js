@@ -95,8 +95,7 @@ if(tableItems.nameTh) {
 
 const validateName = () => {
   console.log("validating name");
-  name = form.name.value;
-  return name.match(
+  return form.name.value.match(
       /^[a-zA-Z\s]*$/
     );
 }
