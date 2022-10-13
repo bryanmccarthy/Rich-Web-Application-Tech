@@ -44,6 +44,10 @@
   background-color: lightblue;
 }
 
+#name-th {
+  cursor: pointer;
+}
+
 .table tbody {
   background-color: lightgrey;
 }

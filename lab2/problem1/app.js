@@ -2,7 +2,11 @@ const form = {
   addContact: document.querySelector('#add-contact'),
   name: document.querySelector('#name'),
   mobile: document.querySelector('#mobile'),
-  email: document.querySelector('#email'),
+  email: document.querySelector('#email')
+}
+
+const table = {
+  nameTh: document.querySelector('#name-th')
 }
 
 // Add contact submitted
@@ -27,10 +31,19 @@ const addContactToTable = () => {
   console.log(form.email.value);
 }
 
+// Event listener for add contact button
 if(form.addContact) {
   form.addContact.addEventListener('click', e => {
     e.preventDefault();  
       addContactSubmit();
+  })
+}
+
+// Event listener for name in table head
+if(table.nameTh) {
+  table.nameTh.addEventListener('click', e => {
+    e.preventDefault();
+      console.log("Name TH pressed");
   })
 }
 
