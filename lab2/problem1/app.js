@@ -5,8 +5,10 @@ const form = {
   email: document.querySelector('#email')
 }
 
-const table = {
-  nameTh: document.querySelector('#name-th')
+const tableItems = {
+  table: document.querySelector(".table"),
+  nameTh: document.querySelector('#name-th'),
+  ascending: false
 }
 
 // Add contact submitted
@@ -39,11 +41,55 @@ if(form.addContact) {
   })
 }
 
+// Sort the table
+const sortTable = () => {
+  console.log("sorting table...");
+
+  let sorting = true;
+  let shouldSort;
+
+  while (sorting) {
+    sorting = false;
+
+    let rows = tableItems.table.rows;
+
+    for (i = 1; i < (rows.length - 1); i++) {
+      shouldSort = false;
+
+      currRow = rows[i].getElementsByTagName("td")[0];
+      nextRow = rows[i + 1].getElementsByTagName("td")[0];
+
+      // If table is not ascending, sort it in ascending order, else sort it descending
+      if (!tableItems.ascending) {
+        if (currRow.innerHTML.toLowerCase() > nextRow.innerHTML.toLowerCase()) {
+          shouldSort = true;
+          break;
+        }
+      } else {
+        if (currRow.innerHTML.toLowerCase() < nextRow.innerHTML.toLowerCase()) {
+          shouldSort = true;
+          break;
+        }
+      }
+    }
+    if (shouldSort) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      sorting = true;
+    }
+  }
+  // Toggle ascending state 
+  if (tableItems.ascending) {
+    tableItems.ascending = false;
+  } else {
+    tableItems.ascending = true;
+  }
+}
+
 // Event listener for name in table head
-if(table.nameTh) {
-  table.nameTh.addEventListener('click', e => {
+if(tableItems.nameTh) {
+  tableItems.nameTh.addEventListener('click', e => {
     e.preventDefault();
-      console.log("Name TH pressed");
+      sortTable();
   })
 }
 
