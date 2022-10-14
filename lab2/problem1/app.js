@@ -115,7 +115,7 @@ const validateMobile = () => {
   mobile = form.mobile.value;
   return mobile.match(
       /^\d+/
-    );
+    ) && mobile.length == 10;
 }
 
 const validateEmail = () => {
