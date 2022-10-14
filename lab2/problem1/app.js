@@ -10,6 +10,7 @@ const form = {
 const tableItems = {
   table: document.querySelector("#table"),
   nameTh: document.querySelector('#name-th'),
+  noResult: document.querySelector('#no-result'),
   ascending: false
 }
 
@@ -21,14 +22,12 @@ const addContactSubmit = () => {
   const validEmail = validateEmail();
 
   if (validName && validMobile && validEmail) {
-    console.log("Valid");
     if (form.error.style.visibility !== 'hidden') {
       form.error.style.visibility = 'hidden';
     }
     addContactToTable();
     document.getElementById("form").reset(); // Clear form entry
   } else {
-    console.log("Invalid");
     form.error.style.visibility = 'visible';
   }
 }
@@ -55,21 +54,28 @@ if(form.addContact) {
 // Filter table by number
 const searchFilter = () => {
   let rows = tableItems.table.rows;
+  let rowsVisible = rows.length-1;
   let filter = form.search.value;
 
   for (i = 0; i < rows.length; i++) {
     currRow = rows[i].getElementsByTagName("td")[1]; // Mobile number element
     if (currRow) {
       mobileNumber = currRow.textContent || currRow.innerText;
-      mobileNumber.indexOf(filter) > -1 ? rows[i].style.display = "" : rows[i].style.display = "none";
+      if (mobileNumber.indexOf(filter) > -1) {
+       rows[i].style.display = "";
+       rowsVisible++;
+      } else {
+        rows[i].style.display = "none";
+        rowsVisible--;
+      }
     }
+    // If number of rows visible is not 0 then don't show noResult div
+    rowsVisible !== 0 ? tableItems.noResult.style.visibility = 'hidden' : tableItems.noResult.style.visibility = "visible";
   }
 }
 
 // Sort the table
 const sortTable = () => {
-  console.log("sorting table...");
-
   let sorting = true;
   let shouldSort;
 
@@ -119,14 +125,12 @@ if(tableItems.nameTh) {
 }
 
 const validateName = () => {
-  console.log("validating name");
   return form.name.value.match(
       /^[a-zA-Z\s]*$/
     );
 }
 
 const validateMobile = () => {
-  console.log("validating mobile");
   mobile = form.mobile.value;
   return mobile.match(
       /^\d+/
@@ -134,7 +138,6 @@ const validateMobile = () => {
 }
 
 const validateEmail = () => {
-  console.log("validating email");
   email = form.email.value;
   return email.match(
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
