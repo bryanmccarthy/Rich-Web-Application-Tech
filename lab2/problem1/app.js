@@ -3,11 +3,12 @@ const form = {
   name: document.querySelector('#name'),
   mobile: document.querySelector('#mobile'),
   email: document.querySelector('#email'),
-  error: document.querySelector('#error')
+  error: document.querySelector('#error'),
+  search: document.querySelector('#search')
 }
 
 const tableItems = {
-  table: document.querySelector(".table"),
+  table: document.querySelector("#table"),
   nameTh: document.querySelector('#name-th'),
   ascending: false
 }
@@ -49,6 +50,20 @@ if(form.addContact) {
     e.preventDefault();  
       addContactSubmit();
   })
+}
+
+// Filter table by number
+const searchFilter = () => {
+  let rows = tableItems.table.rows;
+  let filter = form.search.value;
+
+  for (i = 0; i < rows.length; i++) {
+    currRow = rows[i].getElementsByTagName("td")[1]; // Mobile number element
+    if (currRow) {
+      mobileNumber = currRow.textContent || currRow.innerText;
+      mobileNumber.indexOf(filter) > -1 ? rows[i].style.display = "" : rows[i].style.display = "none";
+    }
+  }
 }
 
 // Sort the table

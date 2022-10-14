@@ -47,16 +47,16 @@
   margin: 5px;
 }
 
-.table {
+#table {
   text-align: left;
 }
 
-.table thead th {
+#table thead th {
   padding-right: 18vw;
   border: 1px solid black;
 }
 
-.table td {
+#table td {
   border: 1px solid black;  
 }
 

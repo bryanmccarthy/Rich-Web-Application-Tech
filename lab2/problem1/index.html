@@ -26,7 +26,7 @@
 
       <div class="search-container">
         <label>Search contact by Mobile No:</label>
-        <input type="text" minlength="10" maxlength="10" id="search"/>
+        <input type="text" minlength="10" maxlength="10" id="search" onkeyup="searchFilter()"/>
       </div>
 
       <div class="table-title">
@@ -34,9 +34,9 @@
       </div>
 
       <div class="table-container">
-        <table class="table">
+        <table id="table">
           <thead>
-            <tr id="">
+            <tr id="table-row">
               <th id="name-th">Name</th>
               <th>Mobile</th>
               <th>Email</th>
