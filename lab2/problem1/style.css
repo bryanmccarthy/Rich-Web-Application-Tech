@@ -45,30 +45,32 @@
 .table-container {
   display: flex;
   justify-content: center;
-  margin: 5px;
 }
 
 #table {
   text-align: left;
 }
 
-#table thead th {
+#table th {
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  padding-left: 1vw;
   padding-right: 18vw;
-  border: 1px solid black;
+  border: 0.5px solid black;
 }
 
 #table td {
-  border: 1px solid black;  
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  border: 0.5px solid black;  
 }
 
 tr:nth-child(odd) {background: #f2f2f2}
 
 #name-th {
   cursor: pointer;
-}
-
-.table tbody {
-  background-color: lightgrey;
 }
 
 #no-result {
