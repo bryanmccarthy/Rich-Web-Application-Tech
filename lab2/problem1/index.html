@@ -6,38 +6,44 @@
   </head>
 
   <body>
-    <div class="heading">
-      <h1> Phone Directory </h1>
-    </div>
+    <div class="container">
+      <div class="heading">
+        <h1> Phone Directory </h1>
+      </div>
 
-    <div class="form-container">
-      <form id="form">
-        <input placeholder="name" type="text" maxlength="20" id="name" required/>
-        <input placeholder="mobile" type="text" minlength="10" maxlength="10" id="mobile" required/>
-        <input placeholder="email" type="email" maxlength="40" id="email" required/>
-        <button type="button" id="add-contact">add contact</button>
-      </form>
-    </div>
+      <div class="form-container">
+        <form id="form">
+          <input placeholder="name" type="text" maxlength="20" id="name" required/>
+          <input placeholder="mobile" type="text" minlength="10" maxlength="10" id="mobile" required/>
+          <input placeholder="email" type="email" maxlength="40" id="email" required/>
+          <button type="button" id="add-contact">add contact</button>
+        </form>
+      </div>
 
-    <div class="search-container">
-      <label>Search contact by Mobile No:</label>
-      <input type="text" minlength="10" maxlength="10" id="search"/>
-    </div>
+      <div id="error">
+        Error
+      </div>
 
-    <div class="table-title">
-      <label>Contacts</label>
-    </div>
+      <div class="search-container">
+        <label>Search contact by Mobile No:</label>
+        <input type="text" minlength="10" maxlength="10" id="search"/>
+      </div>
 
-    <div class="table-container">
-      <table class="table">
-        <thead>
-          <tr id="">
-            <th id="name-th">Name</th>
-            <th>Mobile</th>
-            <th>Email</th>
-          </tr>
-        </thead>
-      </table>
+      <div class="table-title">
+        <label>Contacts</label>
+      </div>
+
+      <div class="table-container">
+        <table class="table">
+          <thead>
+            <tr id="">
+              <th id="name-th">Name</th>
+              <th>Mobile</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
     </div>
 
     <script src="app.js"></script>

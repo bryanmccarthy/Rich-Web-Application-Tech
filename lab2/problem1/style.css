@@ -1,3 +1,9 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .heading {
   display: flex;
   justify-content: center;
@@ -6,7 +12,7 @@
 .form-container {
   display: flex;
   justify-content: center;
-  margin: 20px;
+  margin: 4px;
 }
 
 .form-container form {
@@ -15,10 +21,15 @@
   border-radius: 10px;
 }
 
+#error {
+  visibility: hidden;
+  color: red;
+}
+
 .search-container {
   display: flex;
   justify-content: center;
-  margin: 20px;
+  margin: 14px;
 }
 .search-container label {
   margin-right: 1vw;
@@ -41,7 +52,7 @@
 }
 
 .table thead th {
-  padding-right: 220px;
+  padding-right: 18vw;
   border: 1px solid black;
 }
 

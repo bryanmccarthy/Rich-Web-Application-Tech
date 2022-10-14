@@ -2,7 +2,8 @@ const form = {
   addContact: document.querySelector('#add-contact'),
   name: document.querySelector('#name'),
   mobile: document.querySelector('#mobile'),
-  email: document.querySelector('#email')
+  email: document.querySelector('#email'),
+  error: document.querySelector('#error')
 }
 
 const tableItems = {
@@ -20,10 +21,14 @@ const addContactSubmit = () => {
 
   if (validName && validMobile && validEmail) {
     console.log("Valid");
+    if (form.error.style.visibility !== 'hidden') {
+      form.error.style.visibility = 'hidden';
+    }
     addContactToTable();
     document.getElementById("form").reset(); // Clear form entry
   } else {
     console.log("Invalid");
+    form.error.style.visibility = 'visible';
   }
 }
 
