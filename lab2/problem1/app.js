@@ -25,38 +25,28 @@ const addContactSubmit = () => {
   if (validName && validMobile && validEmail) {
     if (form.error.style.visibility !== 'hidden') {
       form.error.style.visibility = 'hidden';
-      form.form.style.border = "1px solid darkblue";
     }
     addContactToTable();
     document.getElementById("form").reset(); // Clear form entry
   } else {
     form.error.style.visibility = 'visible';
-    form.form.style.border = "1px solid red";
   }
 }
 
 const addContactToTable = () => {
-  let newContact = tableItems.table.insertRow(tableItems.table.rows.length);
-  let newContactName = newContact.insertCell(0);
-  let newContactMobile = newContact.insertCell(1);
-  let newContactEmail = newContact.insertCell(2);
+  const newContact = tableItems.table.insertRow(tableItems.table.rows.length);
+  const newContactName = newContact.insertCell(0);
+  const newContactMobile = newContact.insertCell(1);
+  const newContactEmail = newContact.insertCell(2);
 
   newContactName.innerHTML = form.name.value;
   newContactMobile.innerHTML = form.mobile.value;
   newContactEmail.innerHTML = form.email.value;
 }
 
-// Event listener for add contact button
-if(form.addContact) {
-  form.addContact.addEventListener('click', e => {
-    e.preventDefault();  
-      addContactSubmit();
-  })
-}
-
 // Filter table by number
 const searchFilter = () => {
-  let rows = tableItems.table.rows;
+  const rows = tableItems.table.rows;
   let rowsVisible = rows.length-1;
   let filter = form.search.value;
 
@@ -89,7 +79,6 @@ const sortTable = () => {
 
     for (i = 1; i < (rows.length - 1); i++) {
       shouldSort = false;
-
       currRow = rows[i].getElementsByTagName("td")[0];
       nextRow = rows[i + 1].getElementsByTagName("td")[0];
 
@@ -111,21 +100,21 @@ const sortTable = () => {
       sorting = true;
     }
   }
-  // Toggle ascending state 
-  if (tableItems.ascending) {
-    tableItems.ascending = false;
-  } else {
-    tableItems.ascending = true;
-  }
+
+  tableItems.ascending ? tableItems.ascending = false : tableItems.ascending = true;
 }
 
+// Event listener for add contact button
+form.addContact.addEventListener('click', e => {
+  e.preventDefault();  
+    addContactSubmit();
+})
+
 // Event listener for name in table head
-if(tableItems.nameTh) {
-  tableItems.nameTh.addEventListener('click', e => {
-    e.preventDefault();
-      sortTable();
-  })
-}
+tableItems.nameTh.addEventListener('click', e => {
+  e.preventDefault();
+    sortTable();
+})
 
 const validateName = () => {
   return form.name.value.match(
