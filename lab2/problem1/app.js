@@ -18,26 +18,14 @@ const tableItems = {
 // Add Contact
 const addContact = () => {
   const validContact = validateContact();
-  let formError = form.error;
 
   if (validContact) {
-    if (formError.style.visibility !== 'hidden') {
-      formError.style.visibility = 'hidden';
-    }
+    toggleError(valid=true);
     addContactToTable();
-    document.getElementById("form").reset(); // Clear form entry
+    resetForm();
   } else {
-    formError.style.visibility = 'visible';
+    toggleError(valid=false);
   }
-}
-
-// Validate contact entries
-const validateContact = () => {
-  const validName = validateName();
-  const validMobile = validateMobile();
-  const validEmail = validateEmail();
-
-  return(validName && validMobile && validEmail);
 }
 
 // Insert contact entries
@@ -50,6 +38,44 @@ const addContactToTable = () => {
   newContactName.innerHTML = form.name.value;
   newContactMobile.innerHTML = form.mobile.value;
   newContactEmail.innerHTML = form.email.value;
+}
+
+// Validate contact entries
+const validateContact = () => {
+  const validName = validateName();
+  const validMobile = validateMobile();
+  const validEmail = validateEmail();
+
+  return(validName && validMobile && validEmail);
+}
+
+const validateName = () => {
+  return form.name.value.match(
+      /^[a-zA-Z\s]*$/
+    );
+}
+
+const validateMobile = () => {
+  mobile = form.mobile.value;
+  return mobile.match(
+      /^\d+/
+    ) && mobile.length == 10;
+}
+
+const validateEmail = () => {
+  email = form.email.value;
+  return email.match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+}
+
+const resetForm = () => {
+  document.getElementById("form").reset();
+}
+
+const toggleError = (valid) => {
+  let formError = form.error;
+  formError.style.visibility = valid === true ? 'hidden' : 'visible';
 }
 
 // Filter table by number
@@ -121,23 +147,3 @@ tableItems.nameTh.addEventListener('click', e => {
   e.preventDefault();
     sortTable();
 })
-
-const validateName = () => {
-  return form.name.value.match(
-      /^[a-zA-Z\s]*$/
-    );
-}
-
-const validateMobile = () => {
-  mobile = form.mobile.value;
-  return mobile.match(
-      /^\d+/
-    ) && mobile.length == 10;
-}
-
-const validateEmail = () => {
-  email = form.email.value;
-  return email.match(
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    );
-}
