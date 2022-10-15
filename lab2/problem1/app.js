@@ -50,23 +50,17 @@ const validateContact = () => {
 }
 
 const validateName = () => {
-  return form.name.value.match(
-      /^[a-zA-Z\s]*$/
-    );
+  return form.name.value.match(/^[a-zA-Z\s]*$/);
 }
 
 const validateMobile = () => {
   mobile = form.mobile.value;
-  return mobile.match(
-      /^\d+/
-    ) && mobile.length == 10;
+  return mobile.match(/^\d+/) && mobile.length == 10;
 }
 
 const validateEmail = () => {
   email = form.email.value;
-  return email.match(
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    );
+  return email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 }
 
 const resetForm = () => {
@@ -85,7 +79,7 @@ const searchFilter = () => {
   let filter = form.search.value;
 
   for (i = 0; i < rows.length; i++) {
-    currRow = rows[i].getElementsByTagName("td")[1]; // Mobile number element
+    let currRow = rows[i].getElementsByTagName("td")[1]; // Mobile number element
     if (currRow) {
       mobileNumber = currRow.textContent || currRow.innerText;
       if (mobileNumber.indexOf(filter) > -1) {
@@ -97,43 +91,37 @@ const searchFilter = () => {
       }
     }
     // If number of rows visible is not 0 then don't show noResult div
-    rowsVisible !== 0 ? tableItems.noResult.style.visibility = 'hidden' : tableItems.noResult.style.visibility = "visible";
+    tableItems.noResult.style.visibility = rowsVisible !== 0 ? 'hidden' : 'visible';
   }
 }
 
 // Sort the table
 const sortTable = () => {
   let sorting = true;
-  let shouldSort;
 
   while (sorting) {
-    sorting = false;
     let rows = tableItems.table.rows;
 
     for (i = 1; i < (rows.length - 1); i++) {
-      shouldSort = false;
-      currRow = rows[i].getElementsByTagName("td")[0];
-      nextRow = rows[i + 1].getElementsByTagName("td")[0];
+      sorting = false;
+      const currRow = rows[i].getElementsByTagName("td")[0];
+      const nextRow = rows[i + 1].getElementsByTagName("td")[0];
 
-      if (!tableItems.ascending) {
-        if (currRow.innerHTML.toLowerCase() > nextRow.innerHTML.toLowerCase()) {
-          shouldSort = true;
-          break;
-        }
-      } else {
-        if (currRow.innerHTML.toLowerCase() < nextRow.innerHTML.toLowerCase()) {
-          shouldSort = true;
-          break;
-        }
+      sorting = shouldWeSort(tableItems.ascending, currRow, nextRow)
+      if (sorting) {
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        break;
       }
     }
-    if (shouldSort) {
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      sorting = true;
-    }
   }
+  tableItems.ascending = tableItems.ascending ? false : true;
+}
 
-  tableItems.ascending ? tableItems.ascending = false : tableItems.ascending = true;
+const shouldWeSort = (ascending, currRow, nextRow) => {
+  currRow = currRow.innerHTML.toLowerCase();
+  nextRow = nextRow.innerHTML.toLowerCase();
+
+  return !ascending && currRow > nextRow || ascending && currRow < nextRow;
 }
 
 // Event listener for add contact button
