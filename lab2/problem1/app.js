@@ -15,24 +15,32 @@ const tableItems = {
   ascending: false
 }
 
-// Add contact submitted
-// Validation
-const addContactSubmit = () => {
-  const validName = validateName();
-  const validMobile = validateMobile();
-  const validEmail = validateEmail();
+// Add Contact
+const addContact = () => {
+  const validContact = validateContact();
+  let formError = form.error;
 
-  if (validName && validMobile && validEmail) {
-    if (form.error.style.visibility !== 'hidden') {
-      form.error.style.visibility = 'hidden';
+  if (validContact) {
+    if (formError.style.visibility !== 'hidden') {
+      formError.style.visibility = 'hidden';
     }
     addContactToTable();
     document.getElementById("form").reset(); // Clear form entry
   } else {
-    form.error.style.visibility = 'visible';
+    formError.style.visibility = 'visible';
   }
 }
 
+// Validate contact entries
+const validateContact = () => {
+  const validName = validateName();
+  const validMobile = validateMobile();
+  const validEmail = validateEmail();
+
+  return(validName && validMobile && validEmail);
+}
+
+// Insert contact entries
 const addContactToTable = () => {
   const newContact = tableItems.table.insertRow(tableItems.table.rows.length);
   const newContactName = newContact.insertCell(0);
@@ -74,7 +82,6 @@ const sortTable = () => {
 
   while (sorting) {
     sorting = false;
-
     let rows = tableItems.table.rows;
 
     for (i = 1; i < (rows.length - 1); i++) {
@@ -82,7 +89,6 @@ const sortTable = () => {
       currRow = rows[i].getElementsByTagName("td")[0];
       nextRow = rows[i + 1].getElementsByTagName("td")[0];
 
-      // If table is not ascending, sort it in ascending order, else sort it descending
       if (!tableItems.ascending) {
         if (currRow.innerHTML.toLowerCase() > nextRow.innerHTML.toLowerCase()) {
           shouldSort = true;
@@ -107,7 +113,7 @@ const sortTable = () => {
 // Event listener for add contact button
 form.addContact.addEventListener('click', e => {
   e.preventDefault();  
-    addContactSubmit();
+    addContact();
 })
 
 // Event listener for name in table head
