@@ -1,4 +1,4 @@
- const note = {
+const note = {
 	noteText: document.querySelector('#note-input'),
 	color: document.querySelector('#color-selector'),
 }
