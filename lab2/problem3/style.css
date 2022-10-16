@@ -24,7 +24,7 @@
   margin: 2em;
 }
 
-.avatar {
+.avatar-container {
   width: 100%;
   border: 0.5px solid lightgreen;
 }

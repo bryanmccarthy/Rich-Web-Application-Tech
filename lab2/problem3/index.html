@@ -9,27 +9,19 @@
 
   <div class="container">
       <div class="search-container">
-        <input type="text" placeholder="username" name="search"/>
+        <input type="text" placeholder="username" id="search-input"/>
         <button id="search-button">Search</button>
       </div>
 
       <div class="user-information">
         <div class="user-profile">
-          <div class="avatar">
-            User Image
+          <div class="avatar-container">
+            <img id="avatar" alt="avatar">
           </div>
-          <div class="profile-info">
-            Name
-          </div>
-          <div class="profile-info">
-            Userame
-          </div>
-          <div class="profile-info">
-            Location
-          </div>
-          <div class="profile-info">
-            Number of Gists
-          </div>
+          <div id="name">name</div>
+          <div id="login">username</div>
+          <div id="location">location</div>
+          <div id="gists">number of gists</div>
         </div>
         <div class="user-repos">
           User Repos

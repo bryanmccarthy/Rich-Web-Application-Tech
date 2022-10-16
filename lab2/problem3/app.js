@@ -1,10 +1,11 @@
 class UserProfile {
-  constructor(name, username, email, location, gists) {
+  constructor(avatar_url, name, login, email, location, public_gists) {
+    this.avatar_url = avatar_url,
     this.name = name;
-    this.username = username;
+    this.login = login;
     this.email = email;
     this.location = location;
-    this.gists = gists;
+    this.public_gists = public_gists;
   }
 }
 
@@ -21,14 +22,35 @@ const fetchRepos = async (url) => {
 }
 
 // Get user profile and create a new UserProfile object
-const getUserProfile = async () => {
-  const user = await fetchUser('bryanmccarthy');
-  const userProfile = new UserProfile(user.name, user.username, user.email, user.location, user.gists);
+const getUserProfile = async (username) => {
+  const user = await fetchUser(username);
+  const userProfile = new UserProfile(user.avatar_url, user.name, user.login, user.email, user.location, user.public_gists);
+  displayUser(userProfile);
 }
 
 // Get user repositories 
-const getUserRepos = async () => {
-  const repos = await fetchRepos('test');
-
+const getUserRepos = async (username) => {
+  const repos = await fetchRepos(username);
   repos.forEach(repo => console.log(`Name: ${repo.name} | Description: ${repo.description}`));
 }
+
+const displayUser = (userProfile) => {
+  document.getElementById('avatar').src = userProfile.avatar_url;
+  document.getElementById('name').innerHTML = userProfile.name;
+  document.getElementById('login').innerHTML = userProfile.login;
+  document.getElementById('location').innerHTML = userProfile.location;
+  document.getElementById('gists').innerHTML = userProfile.gists;
+}
+
+// Search elements
+const search = {
+  input: document.getElementById('search-input'),
+  button: document.getElementById('search-button')
+}
+
+// User input value 
+search.button.addEventListener('click', e => {
+  e.preventDefault();  
+    getUserProfile(search.input.value);
+    getUserRepos(search.input.value);
+})
