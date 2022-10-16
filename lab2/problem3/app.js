@@ -1,5 +1,15 @@
+class UserProfile {
+  constructor(name, username, email, location, gists) {
+    this.name = name;
+    this.username = username;
+    this.email = email;
+    this.location = location;
+    this.gists = gists;
+  }
+}
+
 // Fetch user by username
-const fetchUsers = async (url) => {
+const fetchUser = async (url) => {
   return fetch(`https://api.github.com/users/${url}`)
     .then((response) => response.json());
 }
@@ -10,29 +20,15 @@ const fetchRepos = async (url) => {
     .then((response) => response.json());
 }
 
-/* 
-log for now
-*/
-const userProfile = async () => {
-  const user = await fetchUsers('test');
-
-  const name = user.name;
-  console.log(name);
-  const username = user.login;
-  console.log(username);
-  const email = user.email;
-  console.log(email);
-  const location = user.location;
-  console.log(location);
-  const gists = user.public_gists;
-  console.log(gists);
+// Get user profile and create a new UserProfile object
+const getUserProfile = async () => {
+  const user = await fetchUser('bryanmccarthy');
+  const userProfile = new UserProfile(user.name, user.username, user.email, user.location, user.gists);
 }
 
-const userRepos = async () => {
+// Get user repositories 
+const getUserRepos = async () => {
   const repos = await fetchRepos('test');
 
   repos.forEach(repo => console.log(`Name: ${repo.name} | Description: ${repo.description}`));
 }
-
-userProfile();
-userRepos();
