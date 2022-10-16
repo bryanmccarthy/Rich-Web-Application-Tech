@@ -8,7 +8,7 @@ const form = {
   search: document.querySelector('#search')
 }
 
-const tableItems = {
+const table = {
   table: document.querySelector("#table"),
   nameTh: document.querySelector('#name-th'),
   noResult: document.querySelector('#no-result'),
@@ -30,7 +30,7 @@ const addContact = () => {
 
 // Insert contact entries
 const addContactToTable = () => {
-  const newContact = tableItems.table.insertRow(tableItems.table.rows.length);
+  const newContact = table.table.insertRow(table.table.rows.length);
   const newContactName = newContact.insertCell(0);
   const newContactMobile = newContact.insertCell(1);
   const newContactEmail = newContact.insertCell(2);
@@ -42,24 +42,22 @@ const addContactToTable = () => {
 
 // Validate contact entries
 const validateContact = () => {
-  const validName = validateName();
-  const validMobile = validateMobile();
-  const validEmail = validateEmail();
+  const validName = validateName(form.name.value);
+  const validMobile = validateMobile(form.mobile.value);
+  const validEmail = validateEmail(form.email.value);
 
   return(validName && validMobile && validEmail);
 }
 
-const validateName = () => {
-  return form.name.value.match(/^[a-zA-Z\s]*$/);
+const validateName = (name) => {
+  return name.match(/^[a-zA-Z\s]*$/);
 }
 
-const validateMobile = () => {
-  mobile = form.mobile.value;
+const validateMobile = (mobile) => {
   return mobile.match(/^\d+/) && mobile.length == 10;
 }
 
-const validateEmail = () => {
-  email = form.email.value;
+const validateEmail = (email) => {
   return email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 }
 
@@ -74,24 +72,25 @@ const toggleError = (valid) => {
 
 // Filter table by number
 const searchFilter = () => {
-  const rows = tableItems.table.rows;
+  const rows = table.table.rows;
+  let row = 0;
   let rowsVisible = rows.length-1;
   let filter = form.search.value;
 
-  for (i = 0; i < rows.length; i++) {
-    let currRow = rows[i].getElementsByTagName("td")[1]; // Mobile number element
+  while (row < rows.length) {
+    let currRow = rows[row].getElementsByTagName("td")[1]; // Mobile number element
     if (currRow) {
       mobileNumber = currRow.textContent || currRow.innerText;
       if (mobileNumber.indexOf(filter) > -1) {
-       rows[i].style.display = "";
+       rows[row].style.display = "";
        rowsVisible++;
       } else {
-        rows[i].style.display = "none";
+        rows[row].style.display = "none";
         rowsVisible--;
       }
     }
-    // If number of rows visible is not 0 then don't show noResult div
-    tableItems.noResult.style.visibility = rowsVisible !== 0 ? 'hidden' : 'visible';
+    table.noResult.style.visibility = rowsVisible !== 0 ? 'hidden' : 'visible'; // No-result div visibility
+    row++;
   }
 }
 
@@ -100,21 +99,24 @@ const sortTable = () => {
   let sorting = true;
 
   while (sorting) {
-    let rows = tableItems.table.rows;
+    let rows = table.table.rows;
+    row = 1; // first td row
+    if (rows.length < 3) break;
 
-    for (i = 1; i < (rows.length - 1); i++) {
+    while (row < rows.length - 1) {
       sorting = false;
-      const currRow = rows[i].getElementsByTagName("td")[0];
-      const nextRow = rows[i + 1].getElementsByTagName("td")[0];
+      const currRow = rows[row].getElementsByTagName("td")[0];
+      const nextRow = rows[row + 1].getElementsByTagName("td")[0];
 
-      sorting = shouldWeSort(tableItems.ascending, currRow, nextRow)
+      sorting = shouldWeSort(table.ascending, currRow, nextRow)
       if (sorting) {
-        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        rows[row].parentNode.insertBefore(rows[row + 1], rows[row]);
         break;
       }
+      row++;
     }
   }
-  tableItems.ascending = tableItems.ascending ? false : true;
+  table.ascending = table.ascending ? false : true;
 }
 
 const shouldWeSort = (ascending, currRow, nextRow) => {
@@ -131,7 +133,7 @@ form.addContact.addEventListener('click', e => {
 })
 
 // Event listener for name in table head
-tableItems.nameTh.addEventListener('click', e => {
+table.nameTh.addEventListener('click', e => {
   e.preventDefault();
     sortTable();
 })
