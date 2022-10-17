@@ -1,11 +1,12 @@
-class UserProfile {
-  constructor(avatar_url, name, login, email, location, public_gists) {
+class User {
+  constructor(avatar_url, name, login, email, location, public_gists, repos) {
     this.avatar_url = avatar_url,
     this.name = name;
     this.login = login;
     this.email = email;
     this.location = location;
     this.public_gists = public_gists;
+    this.repos = repos;
   }
 }
 
@@ -22,24 +23,23 @@ const fetchRepos = async (url) => {
 }
 
 // Get user profile and create a new UserProfile object
-const getUserProfile = async (username) => {
+const getUser = async (username) => {
   const user = await fetchUser(username);
-  const userProfile = new UserProfile(user.avatar_url, user.name, user.login, user.email, user.location, user.public_gists);
-  displayUser(userProfile);
-}
-
-// Get user repositories 
-const getUserRepos = async (username) => {
   const repos = await fetchRepos(username);
-  repos.forEach(repo => console.log(`Name: ${repo.name} | Description: ${repo.description}`));
+  const newUser = new User(user.avatar_url, user.name, user.login, user.email, user.location, user.public_gists, repos);
+  displayUser(newUser);
 }
 
-const displayUser = (userProfile) => {
-  document.getElementById('avatar').src = userProfile.avatar_url;
-  document.getElementById('name').innerHTML = userProfile.name;
-  document.getElementById('login').innerHTML = userProfile.login;
-  document.getElementById('location').innerHTML = userProfile.location;
-  document.getElementById('gists').innerHTML = userProfile.public_gists;
+// Display user profile and repos
+const displayUser = (user) => {
+  document.getElementById('avatar').src = user.avatar_url;
+  document.getElementById('name').innerHTML = user.name;
+  document.getElementById('login').innerHTML = user.login;
+  document.getElementById('location').innerHTML = user.location;
+  document.getElementById('gists').innerHTML = user.public_gists;
+  user.repos.forEach(repo => {
+    console.log(`Repo name: ${repo.name} Repo desc: ${repo.description}`);
+  });
 }
 
 // Search elements
@@ -51,6 +51,6 @@ const search = {
 // User input value 
 search.button.addEventListener('click', e => {
   e.preventDefault();  
-    getUserProfile(search.input.value);
-    getUserRepos(search.input.value);
+    getUser(search.input.value);
+
 })
