@@ -39,7 +39,7 @@ const displayUser = (userProfile) => {
   document.getElementById('name').innerHTML = userProfile.name;
   document.getElementById('login').innerHTML = userProfile.login;
   document.getElementById('location').innerHTML = userProfile.location;
-  document.getElementById('gists').innerHTML = userProfile.gists;
+  document.getElementById('gists').innerHTML = userProfile.public_gists;
 }
 
 // Search elements
