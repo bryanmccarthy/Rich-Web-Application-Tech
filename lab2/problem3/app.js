@@ -58,7 +58,6 @@ const addRepoToTable = (name, description) => {
   const repoRow = table.table.insertRow(table.table.rows.length);
   const repoName = repoRow.insertCell(0);
   const repoDescription = repoRow.insertCell(1);
-
   repoName.innerHTML = name;
   repoDescription.innerHTML = description;
 }

@@ -1,41 +1,79 @@
+html,body{
+  margin: 0;
+  background-color: #334756;
+}
+
+input[type="text"]
+{
+    font-size:1em;
+}
+
 .container {
-  border: 0.5px solid black;
+  height: 100vh;
+  width: 100vw;
 }
 
 .search-container {
-  border: 0.5px solid lightblue;
   text-align: center;
   margin: 2em;
 }
 
+#search-input {
+  width: 40vw;
+  height: 4vh;
+  border-radius: 0.5em;
+  background-color: #F4DFD0;
+}
+
 #search-button {
-  /*Icon*/
+  cursor: pointer;
+  width: 6vw;
+  height: 4vh;
+  border-radius: 0.5em;
+  background-color: #F4DFD0;
 }
 
 .user-information {
-  border:  0.5px solid lightcoral;
   display: flex;
   justify-content: center;
+  color:  #082032;
+  font-size: 1em;
 }
 
 .user-profile {
-  border: 0.5px solid lightgreen;
   width: 40%;
   margin: 2em;
+  text-align: center;
+  border-radius: 1em;
+  background-color: #F4DFD0;
+}
+
+.user-profile-info {
+  text-align: left;
 }
 
 .avatar-container {
   width: 100%;
-  border: 0.5px solid lightgreen;
+}
+
+#avatar {
+  width: 12em;
+  height: 12em;
+  border-radius: 50%;
 }
 
 .profile-info {
   width: 100%;
-  border: 0.5px solid lightgreen;
 }
 
-.repos {
-  border: 0.5px solid red;
+.user-repos {
   width: 40%;
   margin: 2em;
+  text-align: center;
+  border-radius: 1em;
+  background-color: #F4DFD0;
+}
+
+#repos-table {
+  text-align: left;
 }
