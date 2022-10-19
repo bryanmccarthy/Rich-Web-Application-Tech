@@ -10,6 +10,17 @@ class User {
   }
 }
 
+// Search elements
+const search = {
+  input: document.getElementById('search-input'),
+  button: document.getElementById('search-button')
+}
+
+// Table elements
+const table = {
+  table: document.querySelector("#repos-table")
+}
+
 // Fetch user by username
 const fetchUser = async (url) => {
   return fetch(`https://api.github.com/users/${url}`)
@@ -38,17 +49,21 @@ const displayUser = (user) => {
   document.getElementById('location').innerHTML = user.location;
   document.getElementById('gists').innerHTML = user.public_gists;
   user.repos.forEach(repo => {
-    console.log(`Repo name: ${repo.name} Repo desc: ${repo.description}`);
+    addRepoToTable(repo.name, repo.description);
   });
 }
 
-// Search elements
-const search = {
-  input: document.getElementById('search-input'),
-  button: document.getElementById('search-button')
+// Add repository row into table
+const addRepoToTable = (name, description) => {
+  const repoRow = table.table.insertRow(table.table.rows.length);
+  const repoName = repoRow.insertCell(0);
+  const repoDescription = repoRow.insertCell(1);
+
+  repoName.innerHTML = name;
+  repoDescription.innerHTML = description;
 }
 
-// User input value 
+// Get user input value 
 search.button.addEventListener('click', e => {
   e.preventDefault();  
     getUser(search.input.value);
