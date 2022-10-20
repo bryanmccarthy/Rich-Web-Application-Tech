@@ -1,15 +1,3 @@
-class User {
-  constructor(avatar_url, name, login, email, location, public_gists, repos) {
-    this.avatar_url = avatar_url,
-    this.name = name;
-    this.login = login;
-    this.email = email;
-    this.location = location;
-    this.public_gists = public_gists;
-    this.repos = repos;
-  }
-}
-
 // Search elements
 const search = {
   input: document.getElementById('search-input'),
@@ -37,18 +25,18 @@ const fetchRepos = async (url) => {
 const getUser = async (username) => {
   const user = await fetchUser(username);
   const repos = await fetchRepos(username);
-  const newUser = new User(user.avatar_url, user.name, user.login, user.email, user.location, user.public_gists, repos);
-  displayUser(newUser);
+  displayUser(user, repos);
 }
 
 // Display user profile and repos
-const displayUser = (user) => {
+const displayUser = (user, repos) => {
   document.getElementById('avatar').src = user.avatar_url;
   document.getElementById('name').innerHTML = user.name;
   document.getElementById('login').innerHTML = user.login;
+  user.email ? document.getElementById('email').innerHTML = user.email : console.log("none");
   document.getElementById('location').innerHTML = user.location;
   document.getElementById('gists').innerHTML = user.public_gists;
-  user.repos.forEach(repo => {
+  repos.forEach(repo => {
     addRepoToTable(repo.name, repo.description);
   });
 }

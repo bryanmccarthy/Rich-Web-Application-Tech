@@ -23,14 +23,17 @@ input[type="text"]
   height: 4vh;
   border-radius: 0.5em;
   background-color: #F4DFD0;
+  border: none;
 }
 
 #search-button {
   cursor: pointer;
   width: 6vw;
   height: 4vh;
-  border-radius: 0.5em;
+  font-size: 1em;
   background-color: #F4DFD0;
+  border: none;
+  border-radius: 0.5em;
 }
 
 .user-information {
