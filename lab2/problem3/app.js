@@ -30,6 +30,7 @@ const getUser = async (username) => {
 
 // Display user profile and repos
 const displayUser = (user, repos) => {
+  table.table.innerHTML = ""; // Remove existing repos
   document.getElementById('avatar').src = user.avatar_url;
   document.getElementById('name').innerHTML = user.name ? user.name : ":(";
   document.getElementById('login').innerHTML = user.login;
