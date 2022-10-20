@@ -31,10 +31,10 @@ const getUser = async (username) => {
 // Display user profile and repos
 const displayUser = (user, repos) => {
   document.getElementById('avatar').src = user.avatar_url;
-  document.getElementById('name').innerHTML = user.name;
+  document.getElementById('name').innerHTML = user.name ? user.name : ":(";
   document.getElementById('login').innerHTML = user.login;
-  user.email ? document.getElementById('email').innerHTML = user.email : console.log("none");
-  document.getElementById('location').innerHTML = user.location;
+  document.getElementById('email').innerHTML = user.email ? user.email : ":(";
+  document.getElementById('location').innerHTML = user.location ? user.location : ":(";
   document.getElementById('gists').innerHTML = user.public_gists;
   repos.forEach(repo => {
     addRepoToTable(repo.name, repo.description);
@@ -54,5 +54,4 @@ const addRepoToTable = (name, description) => {
 search.button.addEventListener('click', e => {
   e.preventDefault();  
     getUser(search.input.value);
-
 })
