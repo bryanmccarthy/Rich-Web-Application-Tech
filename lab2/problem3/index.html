@@ -11,7 +11,9 @@
       <div class="search-container">
         <input type="text" placeholder="username" id="search-input"/>
         <button id="search-button">Search</button>
+        <div id="search-error"></div>
       </div>
+
 
       <div class="user-information">
         <div class="user-profile">
@@ -20,23 +22,16 @@
             <img id="avatar">
           </div>
           <div class="user-profile-info">
-            <div id="name">name</div>
-            <div id="login">username</div>
-            <div id="email">email</div>
-            <div id="location">location</div>
-            <div id="gists">number of gists</div>
+            <div id="name"></div>
+            <div id="login"></div>
+            <div id="email"></div>
+            <div id="location"></div>
+            <div id="gists"></div>
           </div>
         </div>
         <div class="user-repos">
           <h3>User Repositories</h3>
-          <table id="repos-table">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-          </table>
+          <table id="repos-table"></table>
         </div>
       </div>
   </div>

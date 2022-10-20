@@ -40,6 +40,10 @@ input::placeholder {
   border-radius: 0.5em;
 }
 
+#search-error {
+  color: #ff0000;
+}
+
 .user-information {
   display: flex;
   justify-content: center;
@@ -61,10 +65,6 @@ input::placeholder {
 
 #name, #login, #email, #location, #gists {
   padding: 1em;
-}
-
-.avatar-container {
-  width: 100%;
 }
 
 #avatar {
