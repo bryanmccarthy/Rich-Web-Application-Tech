@@ -8,7 +8,7 @@ input[type="text"] {
 }
 
 input::placeholder {
-  color: #f5f5f5;
+  color: #bbbcbd;
 }
 
 .container {
@@ -25,17 +25,17 @@ input::placeholder {
   width: 40vw;
   height: 4vh;
   border-radius: 0.5em;
-  background-color: #655D8A;
-  border: none;
+  background-color: #ffffff;
+  border: 2px solid #4D5664;
 }
 
 #search-button {
   cursor: pointer;
   width: 6vw;
-  height: 4vh;
+  height: 4.5vh;
   font-size: 1em;
   color: #f5f5f5;
-  background-color: #655D8A;
+  background-color: #4D5664;
   border: none;
   border-radius: 0.5em;
 }
@@ -52,7 +52,7 @@ input::placeholder {
   margin: 2em;
   text-align: center;
   border-radius: 1em;
-  background-color: #655D8A;
+  background-color: #4D5664;
 }
 
 .user-profile-info {
@@ -82,7 +82,7 @@ input::placeholder {
   margin: 2em;
   text-align: center;
   border-radius: 1em;
-  background-color: #655D8A;
+  background-color: #4D5664;
 }
 
 #repos-table {
