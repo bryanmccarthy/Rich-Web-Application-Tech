@@ -40,6 +40,10 @@ input::placeholder {
   border-radius: 0.5em;
 }
 
+#search-button:hover {
+  border: 2px solid #f5f5f5;
+}
+
 #search-error {
   color: #ff0000;
 }
@@ -57,6 +61,7 @@ input::placeholder {
   text-align: center;
   border-radius: 1em;
   background-color: #4D5664;
+  height: 40em;
 }
 
 .user-profile-info {
@@ -65,6 +70,7 @@ input::placeholder {
 
 #name, #login, #email, #location, #gists {
   padding: 1em;
+  padding-bottom: 2em;
 }
 
 #avatar {
@@ -83,8 +89,17 @@ input::placeholder {
   text-align: center;
   border-radius: 1em;
   background-color: #4D5664;
+  height: 40em;
+  overflow: scroll;
 }
 
 #repos-table {
   text-align: left;
+  padding: .5em;
+}
+
+#repos-table td {
+  padding: 1em;
+  border: 0.5px solid #f5f5f5;  
+  border-radius: .2em;
 }
