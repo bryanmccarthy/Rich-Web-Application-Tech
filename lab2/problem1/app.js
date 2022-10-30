@@ -73,6 +73,7 @@ const resetForm = () => {
   document.getElementById("form").reset();
 }
 
+// Toggles visibility of form error message
 const toggleError = (valid) => {
   let formError = form.error;
   formError.style.visibility = valid === true ? 'hidden' : 'visible';
@@ -127,6 +128,7 @@ const sortTable = () => {
   table.ascending = table.ascending ? false : true;
 }
 
+// Returns bool for if we need to sort the current and next row
 const shouldWeSort = (ascending, currRow, nextRow) => {
   currRow = currRow.innerHTML.toLowerCase();
   nextRow = nextRow.innerHTML.toLowerCase();
