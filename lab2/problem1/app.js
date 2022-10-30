@@ -1,8 +1,9 @@
 /*
-Sources:
-https://www.w3schools.blog/spaces-letters-alphabets-validation-javascript-js
-https://www.w3schools.com/jsref/jsref_regexp_0-9.asp
-https://www.w3resource.com/javascript/form/email-validation.php
+  Sources:
+  https://www.w3schools.blog/spaces-letters-alphabets-validation-javascript-js
+  https://www.w3schools.com/jsref/jsref_regexp_0-9.asp
+  https://www.w3resource.com/javascript/form/email-validation.php
+  https://www.tutorialspoint.com/how-to-sort-an-html-table-using-javascript
 */
 
 const form = {
