@@ -1,3 +1,10 @@
+/*
+Sources:
+https://www.w3schools.blog/spaces-letters-alphabets-validation-javascript-js
+https://www.w3schools.com/jsref/jsref_regexp_0-9.asp
+https://www.w3resource.com/javascript/form/email-validation.php
+*/
+
 const form = {
   form: document.querySelector('#form'),
   addContact: document.querySelector('#add-contact'),
@@ -54,11 +61,11 @@ const validateName = (name) => {
 }
 
 const validateMobile = (mobile) => {
-  return mobile.match(/^\d+/) && mobile.length == 10;
+  return mobile.match(/[0-9]/) && mobile.length == 10;
 }
 
 const validateEmail = (email) => {
-  return email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+  return email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
 }
 
 const resetForm = () => {
