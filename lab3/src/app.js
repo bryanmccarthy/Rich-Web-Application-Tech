@@ -1,5 +1,10 @@
-import { fromEvent } from 'rxjs';
+const note = {
+	noteText: document.querySelector('#note-input'),
+	color: document.querySelector('#color-selector'),
+}
 
-const button = document.querySelector('button');
+const form = {
+	addBtn: document.querySelector('#add-button'),
+}
 
-fromEvent(button, 'click').subscribe(() => console.log('clicked'));
+const notes = document.querySelector('.notes-container');
