@@ -5,7 +5,20 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <button id="button"></button>
+  <div class="form-container">
+    <header>Note App</header>
+    <form>
+      <textarea placeholder="note..." maxlength="220" id="note-input"></textarea>
+      <div class="selections">
+        <select id="color-selector">
+          <option value="blue">blue</option>
+          <option value="orange">orange</option>
+          <option value="green">green</option>
+          <option value="pink">pink</option>
+        </select>
+      </div>
+    </form>
+  </div>
 
   <script src="./dist/bundle.js"></script>
 </body>
