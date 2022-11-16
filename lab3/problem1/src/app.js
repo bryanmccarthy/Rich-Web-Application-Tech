@@ -39,11 +39,12 @@ const addNote = () => {
   note.noteText.focus();
   
   const deleteNoteButton = fromEvent(deleteBtn, 'click');
-  deleteNoteButton.subscribe(() => deleteNote());
+  deleteNoteButton.subscribe((e) => deleteNote(e));
 }
 
-const deleteNote = () => {
-  console.log("delete note");
+const deleteNote = (e) => {
+  const note = e.target.parentNode;
+  note.remove();
 }
 
 const addNoteButton = fromEvent(form.addNoteBtn, 'click');
