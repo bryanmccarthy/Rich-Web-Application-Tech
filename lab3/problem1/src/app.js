@@ -53,7 +53,7 @@ const deleteNote = (e) => {
 const editNote = (e) => {
   const note = e.target.parentNode;
   note.toggleAttribute('contenteditable');
-  const editBtnText = e.target.innerHTML === "edit" ? e.target.innerHTML = "save" : e.target.innerHTML = "edit";
+  e.target.innerHTML === "edit" ? e.target.innerHTML = "save" : e.target.innerHTML = "edit";
 }
 
 const addNoteButton = fromEvent(form.addNoteBtn, 'click');
