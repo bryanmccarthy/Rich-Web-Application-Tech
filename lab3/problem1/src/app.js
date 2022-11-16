@@ -53,6 +53,7 @@ const deleteNote = (e) => {
 const editNote = (e) => {
   const note = e.target.parentNode;
   note.toggleAttribute('contenteditable');
+  note.focus();
   e.target.innerHTML === "edit" ? e.target.innerHTML = "save" : e.target.innerHTML = "edit";
 }
 
