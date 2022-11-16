@@ -40,11 +40,20 @@ const addNote = () => {
   
   const deleteNoteButton = fromEvent(deleteBtn, 'click');
   deleteNoteButton.subscribe((e) => deleteNote(e));
+
+  const editNoteButton = fromEvent(editBtn, 'click');
+  editNoteButton.subscribe((e) => editNote(e));
 }
 
 const deleteNote = (e) => {
   const note = e.target.parentNode;
   note.remove();
+}
+
+const editNote = (e) => {
+  const note = e.target.parentNode;
+  note.toggleAttribute('contenteditable');
+  const editBtnText = e.target.innerHTML === "edit" ? e.target.innerHTML = "save" : e.target.innerHTML = "edit";
 }
 
 const addNoteButton = fromEvent(form.addNoteBtn, 'click');
