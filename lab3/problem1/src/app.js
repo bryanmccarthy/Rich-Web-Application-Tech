@@ -43,6 +43,9 @@ const addNote = () => {
 
   const editNoteButton = fromEvent(editBtn, 'click');
   editNoteButton.subscribe((e) => editNote(e));
+
+  const editColor = fromEvent(editColorSelector, 'change');
+  editColor.subscribe((e) => changeNoteColor(e, editColorSelector.value));
 }
 
 const deleteNote = (e) => {
@@ -55,6 +58,13 @@ const editNote = (e) => {
   note.toggleAttribute('contenteditable');
   note.focus();
   e.target.innerHTML === "edit" ? e.target.innerHTML = "save" : e.target.innerHTML = "edit";
+}
+
+// Remove any existing color from classList and add the new color
+const changeNoteColor = (e, color) => {
+  const note = e.target.parentNode;
+  note.classList.remove('blue', 'orange', 'green', 'pink'); // Remove any existing color from classList
+  note.classList.add(color);
 }
 
 const addNoteButton = fromEvent(form.addNoteBtn, 'click');
