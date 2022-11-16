@@ -37,6 +37,13 @@ const addNote = () => {
   notes.appendChild(noteBody);
   note.noteText.value = '';
   note.noteText.focus();
+  
+  const deleteNoteButton = fromEvent(deleteBtn, 'click');
+  deleteNoteButton.subscribe(() => deleteNote());
+}
+
+const deleteNote = () => {
+  console.log("delete note");
 }
 
 const addNoteButton = fromEvent(form.addNoteBtn, 'click');
