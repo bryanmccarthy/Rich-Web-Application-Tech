@@ -1,12 +1,14 @@
 import { fromEvent, timer } from 'rxjs';
 
-const countdownButton = document.querySelector('.countdown-button');
-const hours = document.querySelector('.hours-input');
-const minutes = document.querySelector('.minutes-input');
-const seconds = document.querySelector('.seconds-input');
+const timerInput = {
+  countdownButton: document.querySelector('.countdown-button'),
+  hours: document.querySelector('.hours-input'),
+  minutes: document.querySelector('.minutes-input'),
+  seconds: document.querySelector('.seconds-input'),
+}
 
-const countdownEvent = fromEvent(countdownButton, 'click');
-countdownEvent.subscribe((e) => countdownTimer(hours.value, minutes.value, seconds.value));
+const countdownEvent = fromEvent(timerInput.countdownButton, 'click');
+countdownEvent.subscribe((e) => countdownTimer(timerInput.hours.value, timerInput.minutes.value, timerInput.seconds.value));
 
 const countdownTimer = (hours, minutes, seconds) => {
   const totalSeconds = (hours * 3600) + (minutes * 60) + Number(seconds);
@@ -15,6 +17,15 @@ const countdownTimer = (hours, minutes, seconds) => {
     const remainingHours = Math.floor(totalSecondsRemaining / 3600);
     const remainingMinutes = Math.floor((totalSecondsRemaining % 3600) / 60);
     const remainingSeconds = totalSecondsRemaining % 60;
-    console.log(`${remainingHours}:${remainingMinutes}:${remainingSeconds}`);
+    const timeRemaining = formatTime(remainingHours, remainingMinutes, remainingSeconds);
+    console.log(timeRemaining);
   });
 }
+
+const formatTime = (hours, minutes, seconds) => {
+  hours < 10 ? hours = `0${hours}:` : hours;
+  minutes < 10 ? minutes = `0${minutes}:` : minutes;
+  seconds < 10 ? seconds = `0${seconds}` : seconds;
+  return `${hours}${minutes}${seconds}`;
+}
+  
