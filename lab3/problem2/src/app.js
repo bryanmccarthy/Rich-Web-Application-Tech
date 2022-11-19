@@ -9,7 +9,7 @@ const countdownEvent = fromEvent(countdownButton, 'click');
 countdownEvent.subscribe((e) => countdownTimer(hours.value, minutes.value, seconds.value));
 
 const countdownTimer = (hours, minutes, seconds) => {
-  const totalSeconds = (hours * 3600) + (minutes * 60) + seconds;
+  const totalSeconds = (hours * 3600) + (minutes * 60) + Number(seconds);
   timer(0, 1000).subscribe((t) => {
     const totalSecondsRemaining = totalSeconds - t;
     const remainingHours = Math.floor(totalSecondsRemaining / 3600);
