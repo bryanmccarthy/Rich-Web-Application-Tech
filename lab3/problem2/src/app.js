@@ -7,6 +7,8 @@ const timerInput = {
   seconds: document.querySelector('.seconds-input'),
 }
 
+const timerDisplay = document.querySelector('.timer');
+
 const countdownEvent = fromEvent(timerInput.countdownButton, 'click');
 countdownEvent.subscribe((e) => countdownTimer(timerInput.hours.value, timerInput.minutes.value, timerInput.seconds.value));
 
@@ -18,14 +20,13 @@ const countdownTimer = (hours, minutes, seconds) => {
     const remainingMinutes = Math.floor((totalSecondsRemaining % 3600) / 60);
     const remainingSeconds = totalSecondsRemaining % 60;
     const timeRemaining = formatTime(remainingHours, remainingMinutes, remainingSeconds);
-    console.log(timeRemaining);
+    timerDisplay.innerHTML = timeRemaining;
   });
 }
 
 const formatTime = (hours, minutes, seconds) => {
-  hours < 10 ? hours = `0${hours}:` : hours;
-  minutes < 10 ? minutes = `0${minutes}:` : minutes;
+  hours < 10 ? hours = `0${hours}:` : `${hours}:`;
+  minutes < 10 ? minutes = `0${minutes}:` : `${minutes}:`;
   seconds < 10 ? seconds = `0${seconds}` : seconds;
   return `${hours}${minutes}${seconds}`;
 }
-  
