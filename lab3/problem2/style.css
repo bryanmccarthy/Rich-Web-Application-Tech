@@ -6,10 +6,14 @@
 }
 
 .timer-form {
-  background-color: lightgrey;
+  background-color: grey;
+  width: 15em;
 }
 
 .timer-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 1em;
 }
 
@@ -22,4 +26,12 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.timer-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgrey;
+  width: 15em;
 }
