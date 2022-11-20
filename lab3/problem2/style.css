@@ -1,3 +1,9 @@
+.timer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 input {
   width: 2em;
   text-align: center;
