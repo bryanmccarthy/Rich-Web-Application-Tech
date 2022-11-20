@@ -5,7 +5,21 @@
   flex-direction: column;
 }
 
+.timer-form {
+  background-color: lightgrey;
+}
+
+.timer-input {
+  padding: 1em;
+}
+
 input {
   width: 2em;
   text-align: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
