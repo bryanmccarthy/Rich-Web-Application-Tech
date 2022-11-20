@@ -16,6 +16,7 @@ const countdownTimer = (hours, minutes, seconds) => {
   const totalSeconds = (hours * 3600) + (minutes * 60) + Number(seconds);
   timer(0, 1000).subscribe((t) => {
     const totalSecondsRemaining = totalSeconds - t;
+    if (totalSecondsRemaining < 0) { return; }
     const remainingHours = Math.floor(totalSecondsRemaining / 3600);
     const remainingMinutes = Math.floor((totalSecondsRemaining % 3600) / 60);
     const remainingSeconds = totalSecondsRemaining % 60;
