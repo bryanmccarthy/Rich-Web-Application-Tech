@@ -13,10 +13,14 @@ const countdownEvent = fromEvent(timerInput.countdownButton, 'click');
 countdownEvent.subscribe(() => countdownTimer(timerInput.hours.value, timerInput.minutes.value, timerInput.seconds.value));
 
 const countdownTimer = (hours, minutes, seconds) => {
+  timerInput.countdownButton.disabled = true; // disable button while timer is active
   const totalSeconds = (hours * 3600) + (minutes * 60) + Number(seconds);
   timer(0, 1000).subscribe((t) => {
     const totalSecondsRemaining = totalSeconds - t;
-    if (totalSecondsRemaining < 0) { return; }
+    if (totalSecondsRemaining < 0) { 
+      timerInput.countdownButton.disabled = false; // enable button when timer is complete
+      return; 
+    }
     const remainingHours = Math.floor(totalSecondsRemaining / 3600);
     const remainingMinutes = Math.floor((totalSecondsRemaining % 3600) / 60);
     const remainingSeconds = totalSecondsRemaining % 60;
