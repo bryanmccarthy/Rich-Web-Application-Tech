@@ -10,7 +10,7 @@ const timerInput = {
 const timerDisplay = document.querySelector('.timer');
 
 const countdownEvent = fromEvent(timerInput.countdownButton, 'click');
-countdownEvent.subscribe((e) => countdownTimer(timerInput.hours.value, timerInput.minutes.value, timerInput.seconds.value));
+countdownEvent.subscribe(() => countdownTimer(timerInput.hours.value, timerInput.minutes.value, timerInput.seconds.value));
 
 const countdownTimer = (hours, minutes, seconds) => {
   const totalSeconds = (hours * 3600) + (minutes * 60) + Number(seconds);
