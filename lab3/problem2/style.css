@@ -7,6 +7,7 @@
 
 .timer-form {
   background-color: grey;
+  height: 5em;
   width: 15em;
 }
 
@@ -34,4 +35,9 @@ input {
   align-items: center;
   background-color: lightgrey;
   width: 15em;
+  height: 5em;
+}
+
+.timer {
+  padding: 1em;
 }
