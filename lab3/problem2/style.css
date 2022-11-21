@@ -21,10 +21,11 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1em;
+  padding-top: 1em;
 }
 
-input {
+.hours-input, .minutes-input, .seconds-input {
+  height: 2em;
   width: 2em;
   text-align: center;
 }
@@ -33,6 +34,7 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 0.2em;
 }
 
 .timer-display {
