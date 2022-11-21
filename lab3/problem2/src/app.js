@@ -31,7 +31,7 @@ const countdownTimer = (hours, minutes, seconds) => {
 
 const formatTime = (hours, minutes, seconds) => {
   hours = hours === 0 ? '' : (hours < 10 ? `0${hours}:` : `${hours}:`);
-  minutes = minutes ===0 && hours === '' ? '' : (minutes < 10 ? `0${minutes}:` : `${minutes}:`);
+  minutes = minutes === 0 && hours === '' ? '' : (minutes < 10 ? `0${minutes}:` : `${minutes}:`);
   seconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
   
   return `${hours}${minutes}${seconds}`;
