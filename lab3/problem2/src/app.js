@@ -14,6 +14,7 @@ countdownEvent.subscribe(() => countdownTimer(timerInput.hours.value, timerInput
 
 const countdownTimer = (hours, minutes, seconds) => {
   timerInput.countdownButton.disabled = true; // disable button while timer is active
+  clearInputs();
   const totalSeconds = (hours * 3600) + (minutes * 60) + Number(seconds);
   timer(0, 1000).subscribe((t) => {
     const totalSecondsRemaining = totalSeconds - t;
@@ -35,4 +36,10 @@ const formatTime = (hours, minutes, seconds) => {
   seconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
   
   return `${hours}${minutes}${seconds}`;
+}
+
+const clearInputs = () => {
+  timerInput.hours.value = '';
+  timerInput.minutes.value = '';
+  timerInput.seconds.value = '';
 }
