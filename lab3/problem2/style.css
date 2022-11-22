@@ -12,9 +12,11 @@ html, body {
 }
 
 .timer-form {
-  background-color: grey;
-  height: 5em;
+  background-color: #cccccc;
+  height: 6em;
   width: 15em;
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
 }
 
 .timer-input {
@@ -25,9 +27,12 @@ html, body {
 }
 
 .hours-input, .minutes-input, .seconds-input {
+  margin: 0.2em;
+  padding: 0.2em;
   height: 2em;
   width: 2em;
   text-align: center;
+  border: none;
 }
 
 .button-container {
@@ -37,13 +42,23 @@ html, body {
   padding-top: 0.2em;
 }
 
+.countdown-button {
+  margin: 0.3em;
+  height: 2em;
+  width: 10em;
+  border-radius: 0.2em;
+  border: none;
+}
+
 .timer-display {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: lightgrey;
+  background-color: #edebeb;
+  height: 6em;
   width: 15em;
-  height: 5em;
+  border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
 }
 
 .timer {
