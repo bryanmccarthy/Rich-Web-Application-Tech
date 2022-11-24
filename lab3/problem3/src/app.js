@@ -1,3 +1,6 @@
+import { fromEvent } from "rxjs";
+
+const addNoteButton = document.querySelector("button");
 
 class Note {
   constructor(text) {
@@ -20,5 +23,8 @@ class Note {
 const note = new Note("note");
 note.addNote();
 
-const childNote = new Note("child note");
-note.addChildNote(childNote);
+const addNote = fromEvent(addNoteButton, 'click');
+addNote.subscribe(() => {
+  const childNote = new Note("child note");
+  note.addChildNote(childNote);
+});
