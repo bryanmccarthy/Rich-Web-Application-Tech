@@ -28,6 +28,10 @@ class Note {
   addChildNote(note) {
     this.children.push(note);
     note.parent = this;
+
+    const noteElement = document.createElement("div");
+    noteElement.classList.add("child-note");
+    notes.appendChild(noteElement);
   }
 }
 
