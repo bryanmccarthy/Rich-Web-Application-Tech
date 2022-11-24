@@ -11,25 +11,7 @@ class Note {
   }
 
   addNote() {
-    const note = document.createElement("div");
-    const deleteNote = document.createElement("button");
-    const addChildNote = document.createElement("button");
-
-    note.classList.add("note");
-    note.appendChild(deleteNote);
-    note.appendChild(addChildNote);
-    notes.appendChild(note);
-
-    const deleteNoteEvent = fromEvent(deleteNote, "click");
-    deleteNoteEvent.subscribe(() => {
-      this.deleteNote(note);
-    });
-
-    const addChildNoteEvent = fromEvent(addChildNote, "click")
-    addChildNoteEvent.subscribe(() => {
-      const childNote = new Note();
-      this.addChildNote(childNote);
-    });
+    console.log(this);
   }
 
   deleteNote() {
@@ -42,15 +24,15 @@ class Note {
   addChildNote(note) {
     this.children.push(note);
     note.parent = this;
-
-    const noteElement = document.createElement("div");
-    noteElement.classList.add("child-note");
-    notes.appendChild(noteElement);
+    console.log(this);
   }
 }
 
-const addNote = fromEvent(addNoteButton, 'click');
-addNote.subscribe(() => {
-  const note = new Note("note");
-  note.addNote();
+// TEST
+const note = new Note("note");
+
+const addChildNote = fromEvent(addNoteButton, 'click');
+addChildNote.subscribe(() => {
+  const childNote = new Note("child note");
+  note.addChildNote(childNote);
 });
