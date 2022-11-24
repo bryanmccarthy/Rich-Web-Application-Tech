@@ -12,16 +12,30 @@ class Note {
 
   addNote() {
     const note = document.createElement("div");
+    const deleteNote = document.createElement("button");
     const addChildNote = document.createElement("button");
 
     note.classList.add("note");
+    note.appendChild(deleteNote);
     note.appendChild(addChildNote);
     notes.appendChild(note);
+
+    const deleteNoteEvent = fromEvent(deleteNote, "click");
+    deleteNoteEvent.subscribe(() => {
+      this.deleteNote(note);
+    });
 
     const addChildNoteEvent = fromEvent(addChildNote, "click")
     addChildNoteEvent.subscribe(() => {
       const childNote = new Note();
       this.addChildNote(childNote);
+    });
+  }
+
+  deleteNote() {
+    console.log(this);
+    this.children.forEach(child => {
+      child.deleteNote();
     });
   }
 
