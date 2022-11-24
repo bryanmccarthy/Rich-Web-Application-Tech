@@ -12,9 +12,16 @@ class Note {
 
   addNote() {
     const note = document.createElement("div");
+    const addChildNote = document.createElement("button");
+
     note.classList.add("note");
-    note.innerHTML = this.text;
+    note.appendChild(addChildNote);
     notes.appendChild(note);
+
+    const addChildNoteEvent = fromEvent(addChildNote, "click")
+    addChildNoteEvent.subscribe(() => {
+      console.log("add child note");
+    });
   }
 
   addChildNote(note) {
