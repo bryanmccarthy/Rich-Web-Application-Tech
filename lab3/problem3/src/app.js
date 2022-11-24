@@ -5,7 +5,11 @@ class Note {
     this.parent = null;
     this.children = [];
   }
+
+  addNote() {
+    console.log("note: ", this);
+  }
 }
 
 const note = new Note("note");
-console.log(note);
+note.addNote();
