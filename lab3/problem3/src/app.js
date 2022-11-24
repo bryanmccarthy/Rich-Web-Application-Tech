@@ -20,14 +20,14 @@ class Note {
 
     const addChildNoteEvent = fromEvent(addChildNote, "click")
     addChildNoteEvent.subscribe(() => {
-      console.log("add child note");
+      const childNote = new Note();
+      this.addChildNote(childNote);
     });
   }
 
   addChildNote(note) {
     this.children.push(note);
     note.parent = this;
-    console.log(this);
   }
 }
 
