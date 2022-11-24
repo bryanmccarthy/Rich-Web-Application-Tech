@@ -14,13 +14,6 @@ class Note {
     console.log(this);
   }
 
-  deleteNote() {
-    console.log(this);
-    this.children.forEach(child => {
-      child.deleteNote();
-    });
-  }
-
   addChildNote(note) {
     this.children.push(note);
     note.parent = this;
