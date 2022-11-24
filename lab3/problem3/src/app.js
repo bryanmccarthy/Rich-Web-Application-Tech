@@ -1,6 +1,6 @@
 import { fromEvent } from "rxjs";
 
-const addNoteButton = document.querySelector("button");
+const addNoteButton = document.querySelector("add-note");
 
 class Note {
   constructor(text) {
