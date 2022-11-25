@@ -58,6 +58,7 @@ class Note {
   // add delete note button to note
   addDeleteNoteButton(note) {
     const deleteNote = document.createElement("button");
+    deleteNote.classList.add("delete-note-button");
     this.deleteNoteEvent(deleteNote);
     deleteNote.innerHTML = "x";
     note.appendChild(deleteNote);

@@ -30,3 +30,11 @@
   color: white;
   background-color: black;
 }
+
+.delete-note-button {
+  width: 1.8em;
+  height: 1.8em;
+  border: 1px solid white;
+  color: white;
+  background-color: black;
+}
