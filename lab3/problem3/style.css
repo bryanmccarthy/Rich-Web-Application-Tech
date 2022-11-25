@@ -1,11 +1,7 @@
-#add-note {
-  background-color: black;
-  color: white;
-}
-
 .note {
   margin: 0.5em;
-  padding: 0.5em; 
+  padding: 0.5em;
+  height: 2em; 
   background-color: lightgray;
   color: black;
   border-radius: 0.2em;

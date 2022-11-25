@@ -1,4 +1,4 @@
-import { Observable, fromEvent } from "rxjs";
+import { fromEvent } from "rxjs";
 
 const noteDOM = {
   notes: document.querySelector(".notes"),
@@ -18,13 +18,17 @@ class Note {
     this.element = note;
     note.classList.add("note");
     note.innerHTML = this.text;
+    // add child note button to note
+    const addChildNote = document.createElement("button");
+    addChildNote.innerHTML = "+";
+    note.appendChild(addChildNote);
+    // append note element to notes
     noteDOM.notes.appendChild(note);
   }
 
   delete() {
     noteDOM.notes.removeChild(this.element);
     this.children.forEach(child => {
-      console.log("delete child", child);
       child.delete();
     });
   }
