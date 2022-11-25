@@ -1,6 +1,6 @@
 import { Observable, fromEvent } from "rxjs";
 
-const notes = document.querySelector(".notes-container");
+const notes = document.querySelector(".notes");
 const addNoteButton = document.querySelector("#add-note");
 
 class Note {
