@@ -1,4 +1,4 @@
-.notes {
+.notes-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,11 +31,21 @@
 }
 
 .add-note-button {
+  height: 1.8em;
+  border: 1px solid white;
+  color: white;
+  background-color: black;
+  cursor: pointer;
+}
+
+.add-child-note-button {
   width: 1.8em;
   height: 1.8em;
   border: 1px solid white;
   color: white;
   background-color: black;
+  margin-right: 0.2em;
+  cursor: pointer;
 }
 
 .delete-note-button {
@@ -44,4 +54,5 @@
   border: 1px solid white;
   color: white;
   background-color: black;
+  cursor: pointer;
 }
