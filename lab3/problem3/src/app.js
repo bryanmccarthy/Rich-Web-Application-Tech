@@ -2,7 +2,7 @@ import { fromEvent } from "rxjs";
 
 const noteDOM = {
   notes: document.querySelector(".notes"),
-  addNoteButton: document.querySelector("#add-note"),
+  addNoteButton: document.querySelector(".add-note-button"),
 };
 
 class Note {
@@ -39,7 +39,7 @@ class Note {
   // add child note button to note
   addChildNoteButton(note) {
     const addChildNote = document.createElement("button");
-    addChildNote.classList.add("add-child-note-button");
+    addChildNote.classList.add("add-note-button");
     this.createChildNoteEvent(addChildNote);
     addChildNote.innerHTML = "+";
     note.appendChild(addChildNote);
