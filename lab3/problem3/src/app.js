@@ -39,6 +39,7 @@ class Note {
   // add child note button to note
   addChildNoteButton(note) {
     const addChildNote = document.createElement("button");
+    addChildNote.classList.add("add-child-note-button");
     this.createChildNoteEvent(addChildNote);
     addChildNote.innerHTML = "+";
     note.appendChild(addChildNote);
