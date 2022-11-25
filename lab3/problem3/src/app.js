@@ -19,10 +19,10 @@ class Note {
     this.element = note;
     note.classList.add("note");
     note.innerHTML = this.text;
-    // add child note button to top level notes
-    if (this.parent === null) {
-      this.addChildNoteButton(note);
-    }
+    // add button to top level notes
+    if (this.parent === null) this.addChildNoteButton(note);
+    // add delete button to note
+    this.addDeleteNoteButton(note);
     // append note element to notes
     noteDOM.notes.appendChild(note);
   }
@@ -45,11 +45,27 @@ class Note {
     });
   }
 
+  // add delete note button to note
+  addDeleteNoteButton(note) {
+    const deleteNote = document.createElement("button");
+    this.deleteNoteEvent(deleteNote);
+    deleteNote.innerHTML = "x";
+    note.appendChild(deleteNote);
+  }
+
+  // event to delete note
+  deleteNoteEvent(deleteNote) {
+    const deleteNoteEvent = fromEvent(deleteNote, "click");
+    deleteNoteEvent.subscribe(() => {
+      this.delete();
+    });
+  }
+
   // delete note element and children elements
   delete() {
-    noteDOM.notes.removeChild(this.element);
+    this.element.remove();
     this.children.forEach(child => {
-      child.delete();
+      child.delete(child.parent);
     });
   }
 
