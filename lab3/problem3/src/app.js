@@ -19,13 +19,22 @@ class Note {
     this.element = note;
     this.parent === null ? note.classList.add("note") : note.classList.add("child-note");
     note.innerHTML = this.text;
-    // add button to top level notes
+    // add editable area
+    this.addTextArea(note);
+    // add buttons
     if (this.parent === null) this.addChildNoteButton(note);
-    // add delete button to note
     this.addDeleteNoteButton(note);
     // append note element to notes
     noteDOM.notes.appendChild(note);
   }
+
+  // add editable area to note
+  addTextArea(note) {
+    const textArea = document.createElement("div");
+    textArea.classList.add("note-text-area");
+    textArea.toggleAttribute("contenteditable");
+    note.appendChild(textArea);
+  }  
 
   // add child note button to note
   addChildNoteButton(note) {

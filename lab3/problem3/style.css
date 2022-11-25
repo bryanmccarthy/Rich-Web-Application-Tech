@@ -1,7 +1,8 @@
 .note {
   margin: 0.5em;
   padding: 0.5em;
-  height: 2em; 
+  height: 4.5em;
+  width: 20em; 
   background-color: lightgray;
   color: black;
   border-radius: 0.2em;
@@ -10,8 +11,14 @@
 .child-note {
   margin: 0.5em;
   padding: 0.5em;
-  height: 2em;
+  height: 4.5em;
+  width: 20em;
   background-color: lightblue;
   color: black;
   border-radius: 0.2em;
+}
+
+.note-text-area {
+  width: 100%;
+  height: 3em;
 }
