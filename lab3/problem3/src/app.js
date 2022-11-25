@@ -17,7 +17,7 @@ class Note {
   render() {
     const note = document.createElement("div");
     this.element = note;
-    note.classList.add("note");
+    this.parent === null ? note.classList.add("note") : note.classList.add("child-note");
     note.innerHTML = this.text;
     // add button to top level notes
     if (this.parent === null) this.addChildNoteButton(note);
