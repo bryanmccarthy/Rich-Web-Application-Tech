@@ -13,6 +13,7 @@ class Note {
     this.children = [];
   }
 
+  // render note to notes div
   render() {
     const note = document.createElement("div");
     this.element = note;
@@ -26,28 +27,25 @@ class Note {
     noteDOM.notes.appendChild(note);
   }
 
+  // add child note button to note
   addChildNoteButton(note) {
-    // add child note button to note
     const addChildNote = document.createElement("button");
     this.createChildNoteEvent(addChildNote);
     addChildNote.innerHTML = "+";
     note.appendChild(addChildNote);
   }
-
+  
+  // event to create child note
   createChildNoteEvent(addChildNote) {
-    // event to create child note
     const addChildNoteEvent = fromEvent(addChildNote, "click");
     addChildNoteEvent.subscribe(() => {
       const childNote = new Note("");
       this.addChild(childNote);
-      this.renderChild(childNote);
+      childNote.render();
     });
   }
 
-  renderChild(child) {
-    child.render();
-  }
-
+  // delete note element and children elements
   delete() {
     noteDOM.notes.removeChild(this.element);
     this.children.forEach(child => {
@@ -55,6 +53,7 @@ class Note {
     });
   }
 
+  // add child note to this note
   addChild(note) {
     note.parent = this;
     this.children.push(note);
