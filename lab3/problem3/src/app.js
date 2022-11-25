@@ -18,12 +18,34 @@ class Note {
     this.element = note;
     note.classList.add("note");
     note.innerHTML = this.text;
-    // add child note button to note
-    const addChildNote = document.createElement("button");
-    addChildNote.innerHTML = "+";
-    note.appendChild(addChildNote);
+    // add child note button to top level notes
+    if (this.parent === null) {
+      this.addChildNoteButton(note);
+    }
     // append note element to notes
     noteDOM.notes.appendChild(note);
+  }
+
+  addChildNoteButton(note) {
+    // add child note button to note
+    const addChildNote = document.createElement("button");
+    this.createChildNoteEvent(addChildNote);
+    addChildNote.innerHTML = "+";
+    note.appendChild(addChildNote);
+  }
+
+  createChildNoteEvent(addChildNote) {
+    // event to create child note
+    const addChildNoteEvent = fromEvent(addChildNote, "click");
+    addChildNoteEvent.subscribe(() => {
+      const childNote = new Note("");
+      this.addChild(childNote);
+      this.renderChild(childNote);
+    });
+  }
+
+  renderChild(child) {
+    child.render();
   }
 
   delete() {
@@ -39,7 +61,7 @@ class Note {
   }
 }
 
-// Event to create a new note
+// event to create a new note
 const addNoteEvent = fromEvent(noteDOM.addNoteButton, "click");
 addNoteEvent.subscribe(() => {
   const note = new Note("");
