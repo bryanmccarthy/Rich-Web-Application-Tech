@@ -1,6 +1,7 @@
-// import { Observable, fromEvent } from "rxjs";
+import { Observable, fromEvent } from "rxjs";
 
 const notes = document.querySelector(".notes-container");
+const addNoteButton = document.querySelector("#add-note");
 
 class Note {
   constructor(text) {
@@ -32,11 +33,9 @@ class Note {
   }
 }
 
-const note = new Note("new note");
-note.render();
-
-const childNote = new Note("child note");
-note.addChild(childNote);
-childNote.render();
-
-note.delete();
+// Event to create a new note
+const addNoteEvent = fromEvent(addNoteButton, "click");
+addNoteEvent.subscribe(() => {
+  const note = new Note();
+  note.render();
+});
