@@ -1,7 +1,9 @@
 import { Observable, fromEvent } from "rxjs";
 
-const notes = document.querySelector(".notes");
-const addNoteButton = document.querySelector("#add-note");
+const noteDOM = {
+  notes: document.querySelector(".notes"),
+  addNoteButton: document.querySelector("#add-note"),
+};
 
 class Note {
   constructor(text) {
@@ -16,11 +18,11 @@ class Note {
     this.element = note;
     note.classList.add("note");
     note.innerHTML = this.text;
-    notes.appendChild(note);
+    noteDOM.notes.appendChild(note);
   }
 
   delete() {
-    notes.removeChild(this.element);
+    noteDOM.notes.removeChild(this.element);
     this.children.forEach(child => {
       console.log("delete child", child);
       child.delete();
@@ -34,8 +36,8 @@ class Note {
 }
 
 // Event to create a new note
-const addNoteEvent = fromEvent(addNoteButton, "click");
+const addNoteEvent = fromEvent(noteDOM.addNoteButton, "click");
 addNoteEvent.subscribe(() => {
-  const note = new Note();
+  const note = new Note("");
   note.render();
 });
