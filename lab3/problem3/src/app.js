@@ -20,6 +20,10 @@ class Note {
 
   delete() {
     notes.removeChild(this.element);
+    this.children.forEach(child => {
+      console.log("delete child", child);
+      child.delete();
+    });
   }
 
   addChild(note) {
