@@ -31,7 +31,7 @@ class Note {
   // add editable area to note
   addTextArea(note) {
     const textArea = document.createElement("div");
-    textArea.classList.add("note-text-area");
+    this.parent === null ? textArea.classList.add("note-text-area") : textArea.classList.add("child-note-text-area");
     textArea.toggleAttribute("contenteditable");
     note.appendChild(textArea);
   }  
