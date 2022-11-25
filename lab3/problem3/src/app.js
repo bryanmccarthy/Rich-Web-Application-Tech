@@ -1,6 +1,5 @@
-import { fromEvent } from "rxjs";
+// import { Observable, fromEvent } from "rxjs";
 
-const addNoteButton = document.querySelector("#add-note");
 const notes = document.querySelector(".notes-container");
 
 class Note {
@@ -10,22 +9,18 @@ class Note {
     this.children = [];
   }
 
-  addNote() {
-    console.log(this);
+  render() {
+    const note = document.createElement("div");
+    note.classList.add("note");
+    note.innerHTML = this.text;
+    notes.appendChild(note);
   }
 
-  addChildNote(note) {
-    this.children.push(note);
+  addChild(note) {
     note.parent = this;
-    console.log(this);
+    this.children.push(note);
   }
 }
 
-// TEST
-const note = new Note("note");
-
-const addChildNote = fromEvent(addNoteButton, 'click');
-addChildNote.subscribe(() => {
-  const childNote = new Note("child note");
-  note.addChildNote(childNote);
-});
+const note = new Note("new note");
+note.render();
