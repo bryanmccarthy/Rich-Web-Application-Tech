@@ -44,9 +44,14 @@ html, body {
 .add-note-button {
   margin: 2em;
   padding: 0.5em;
+  background-color: black;
+  color: white;
   border: 1px solid black;
   border-radius: 0.2em;
   cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .add-child-note-button {
