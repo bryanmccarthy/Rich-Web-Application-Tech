@@ -1,3 +1,10 @@
+.notes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .note {
   margin: 0.5em;
   padding: 0.5em;
