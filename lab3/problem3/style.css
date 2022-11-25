@@ -1,16 +1,22 @@
+html, body {
+  width: 100vw;
+  height: 100vh;
+}
+
 .notes-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .note {
   margin: 0.5em;
   padding: 0.5em;
-  height: 4.5em;
+  height: 8em;
   width: 20em; 
-  background-color: lightgray;
+  background-color: #7a9177;
   color: black;
   border-radius: 0.2em;
 }
@@ -20,21 +26,26 @@
   padding: 0.5em;
   height: 4.5em;
   width: 20em;
-  background-color: lightblue;
+  background-color: #dbf2d8;
   color: black;
   border-radius: 0.2em;
 }
 
 .note-text-area {
   width: 100%;
+  height: 6.5em;
+}
+
+.child-note-text-area {
+  width: 100%;
   height: 3em;
 }
 
 .add-note-button {
-  height: 1.8em;
-  border: 1px solid white;
-  color: white;
-  background-color: black;
+  margin: 2em;
+  padding: 0.5em;
+  border: 1px solid black;
+  border-radius: 0.2em;
   cursor: pointer;
 }
 
