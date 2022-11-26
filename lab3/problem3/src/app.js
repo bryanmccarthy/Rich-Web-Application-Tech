@@ -76,7 +76,7 @@ class Note {
   delete() {
     this.element.remove();
     this.children.forEach(child => {
-      child.delete(child.parent);
+      child.delete(child);
     });
   }
 
