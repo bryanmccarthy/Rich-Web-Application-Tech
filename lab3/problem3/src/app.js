@@ -24,6 +24,7 @@ class Note {
     // add buttons
     if (this.parent === null) this.addChildNoteButton(note);
     this.addDeleteNoteButton(note);
+    this.addColorSelector(note);
     // append note element to notes
     noteDOM.notes.appendChild(note);
   }
@@ -52,6 +53,29 @@ class Note {
       const childNote = new Note("");
       this.addChild(childNote);
       childNote.render();
+    });
+  }
+
+  // add color selector to note
+  addColorSelector(note) {
+    const colorSelector = document.createElement("select");
+    colorSelector.classList.add("color-selector");
+    this.colorSelectorEvent(colorSelector);
+    const colors = ["green", "blue", "red"];
+    colors.forEach((color) => {
+      const option = document.createElement("option");
+      option.value = color;
+      option.innerHTML = color;
+      colorSelector.appendChild(option);
+    });
+    note.appendChild(colorSelector);
+  }
+
+  // event to change note color
+  colorSelectorEvent(colorSelector) {
+    const colorSelectorEvent = fromEvent(colorSelector, "change");
+    colorSelectorEvent.subscribe((e) => {
+      this.element.style.backgroundColor = e.target.value;
     });
   }
 
