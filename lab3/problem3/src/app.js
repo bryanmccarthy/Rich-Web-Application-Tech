@@ -5,6 +5,12 @@ const noteDOM = {
   addNoteButton: document.querySelector(".add-note-button"),
 };
 
+const colorThemes = {
+  green: ['#7a9177', '#dbf2d8'],
+  blue: ['#203275', '#8fa1e3'],
+  red: ['#852938', '#e38d9b'],
+}
+
 class Note {
   constructor(text) {
     this.text = text;
@@ -75,7 +81,7 @@ class Note {
   colorSelectorEvent(colorSelector) {
     const colorSelectorEvent = fromEvent(colorSelector, "change");
     colorSelectorEvent.subscribe((e) => {
-      this.element.style.backgroundColor = e.target.value;
+      this.parent === null ? this.element.style.backgroundColor = colorThemes[e.target.value][0] : this.element.style.backgroundColor = colorThemes[e.target.value][1];
     });
   }
 
