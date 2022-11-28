@@ -7,8 +7,8 @@ const noteDOM = {
 
 const colorThemes = {
   green: ['#7a9177', '#dbf2d8'],
-  blue: ['#203275', '#8fa1e3'],
-  red: ['#852938', '#e38d9b'],
+  blue: ['#6e8af0', '#95a8ed'],
+  red: ['#f26f76', '#f2a5a9'],
 }
 
 class Note {
@@ -25,6 +25,8 @@ class Note {
     this.element = note;
     this.parent === null ? note.classList.add("note") : note.classList.add("child-note");
     note.innerHTML = this.text;
+    // set note color
+    if (this.parent) note.style.backgroundColor = colorThemes[this.parent.element.querySelector(".color-selector").value][1];
     // add editable area
     this.addTextArea(note);
     // add buttons
