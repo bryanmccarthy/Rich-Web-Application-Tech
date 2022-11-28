@@ -81,7 +81,15 @@ class Note {
   colorSelectorEvent(colorSelector) {
     const colorSelectorEvent = fromEvent(colorSelector, "change");
     colorSelectorEvent.subscribe((e) => {
-      this.parent === null ? this.element.style.backgroundColor = colorThemes[e.target.value][0] : this.element.style.backgroundColor = colorThemes[e.target.value][1];
+      this.changeColor(e);
+    });
+  }
+
+  // change note color
+  changeColor(e) {
+    this.parent === null ? this.element.style.backgroundColor = colorThemes[e.target.value][0] : this.element.style.backgroundColor = colorThemes[e.target.value][1];
+    this.children.forEach(child => {
+      child.changeColor(e);
     });
   }
 
