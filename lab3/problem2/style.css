@@ -13,8 +13,8 @@ html, body {
 
 .timer-form {
   background-color: #cccccc;
-  height: 6em;
-  width: 15em;
+  height: 10em;
+  width: 25em;
   border-top-left-radius: 0.5em;
   border-top-right-radius: 0.5em;
 }
@@ -33,6 +33,7 @@ html, body {
   width: 2em;
   text-align: center;
   border: none;
+  font-size: 20px;
 }
 
 .button-container {
@@ -44,10 +45,12 @@ html, body {
 
 .countdown-button {
   margin: 0.3em;
-  height: 2em;
+  height: 3em;
   width: 10em;
   border-radius: 0.2em;
   border: none;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .timer-display {
@@ -55,8 +58,8 @@ html, body {
   justify-content: center;
   align-items: center;
   background-color: #edebeb;
-  height: 6em;
-  width: 15em;
+  height: 10em;
+  width: 25em;
   border-bottom-left-radius: 0.5em;
   border-bottom-right-radius: 0.5em;
 }
