@@ -1,6 +1,7 @@
 .Notes {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
-  color: #000000;
+  justify-content: center;
+  margin-left: 10%;
 }
