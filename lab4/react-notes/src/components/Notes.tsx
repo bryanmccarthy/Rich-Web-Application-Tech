@@ -1,5 +1,6 @@
 import "./Notes.css";
 import { useState } from "react";
+import Note from "./Note";
 
 type Note = {
   id: number;
@@ -27,8 +28,7 @@ function Notes() {
       {
         notes.map(note => (
           <div key={note.id}>
-            <h2>{note.title}</h2>
-            <p>{note.body}</p>
+            <Note title={note.title} body={note.body} />
           </div>
         ))
       }
