@@ -24,7 +24,7 @@ function Notes() {
   return (
     <div className="Notes">
       <h1>Notes</h1>
-      <button onClick={addNote}>Add Note</button>
+      <button className="Add-note" onClick={addNote}>+</button>
       <div className="Notes-list">
         {
           notes.map(note => (
