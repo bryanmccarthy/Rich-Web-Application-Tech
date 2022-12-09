@@ -21,10 +21,15 @@ function App() {
     setNotes([...notes, newNote]);
   };
 
+  const handleDelete = (id: number) => {
+    const newNotes = notes.filter(note => note.id !== id)
+    setNotes(newNotes);
+  }
+
   return (
     <div className="App">
       <button className="Add-note" onClick={addNote}>+</button>
-      <Notes notes={notes}/>
+      <Notes notes={notes} handleDelete={handleDelete}/>
     </div>
   )
 }

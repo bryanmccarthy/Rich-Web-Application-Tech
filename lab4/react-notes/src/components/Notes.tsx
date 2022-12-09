@@ -7,16 +7,17 @@ type NoteType = {
   body: string
 }
 
-function Notes({ notes }: { notes: NoteType[] }) {
+function Notes({ notes, handleDelete }: { notes: NoteType[], handleDelete: (params: any) => any }) {
+
   return (
     <div className="Notes">
-        {
-          notes.map(note => (
-            <div key={note.id}>
-              <Note title={note.title} body={note.body} />
-            </div>
-          ))
-        }
+      {
+        notes.map(note => (
+          <div key={note.id}>
+            <Note id={note.id} title={note.title} body={note.body} handleDelete={handleDelete} />
+          </div>
+        ))
+      }
     </div>
   );
 }

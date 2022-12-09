@@ -1,4 +1,5 @@
 .Note {
+  position: relative;
   margin: 0.5em;
   height: 10em;
   width: 26em;
@@ -7,5 +8,19 @@
 }
 
 h3 {
-  text-decoration: underline;
+  height: 1em;
+  border-bottom: 1px solid #000000;
+}
+
+.Delete-note {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 2em;
+  width: 2em;
+  color: #ffffff;
+  background-color: #000000;
+  border: 1px solid #000000;
+  border-radius: 0.4em;
+  margin: 0.5em;
 }
