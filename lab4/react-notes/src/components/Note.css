@@ -8,8 +8,14 @@
 }
 
 h3 {
+  padding: 0.2em;
   height: 1.5em;
   border-bottom: 1px solid #000000;
+}
+
+p {
+  padding: 0.2em;
+  height: 4em;
 }
 
 .Delete-note {
