@@ -1,3 +1,13 @@
 .Notes {
   color: #000000;
 }
+
+.Notes-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+}

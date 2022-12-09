@@ -25,13 +25,15 @@ function Notes() {
     <div className="Notes">
       <h1>Notes</h1>
       <button onClick={addNote}>Add Note</button>
-      {
-        notes.map(note => (
-          <div key={note.id}>
-            <Note title={note.title} body={note.body} />
-          </div>
-        ))
-      }
+      <div className="Notes-list">
+        {
+          notes.map(note => (
+            <div key={note.id}>
+              <Note title={note.title} body={note.body} />
+            </div>
+          ))
+        }
+      </div>
     </div>
   );
 }
