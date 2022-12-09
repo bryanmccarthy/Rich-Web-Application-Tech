@@ -23,7 +23,6 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Notes</h1>
       <button className="Add-note" onClick={addNote}>+</button>
       <Notes notes={notes}/>
     </div>

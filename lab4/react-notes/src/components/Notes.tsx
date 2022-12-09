@@ -10,7 +10,6 @@ type NoteType = {
 function Notes({ notes }: { notes: NoteType[] }) {
   return (
     <div className="Notes">
-      <div className="Notes-list">
         {
           notes.map(note => (
             <div key={note.id}>
@@ -18,7 +17,6 @@ function Notes({ notes }: { notes: NoteType[] }) {
             </div>
           ))
         }
-      </div>
     </div>
   );
 }
