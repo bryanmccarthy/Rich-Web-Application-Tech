@@ -1,6 +1,11 @@
 .Note {
   margin: 0.5em;
-  width: 20em;
+  height: 10em;
+  width: 30em;
   border: 1px solid #000000;
   border-radius: 0.4em;
+}
+
+h3 {
+  text-decoration: underline;
 }

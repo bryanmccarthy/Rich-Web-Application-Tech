@@ -15,8 +15,8 @@ function Notes() {
   const addNote = () => {
     const newNote = {
       id: notes.length + 1,
-      title: "test title",
-      body: "test body",
+      title: "",
+      body: "",
     };
     setNotes([...notes, newNote]);
   };
