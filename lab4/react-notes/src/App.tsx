@@ -11,14 +11,16 @@ type NoteType = {
 function App() {
 
   const [notes, setNotes] = useState<NoteType[]>([]);
+  const [latestId, setLatestId] = useState<number>(0);
 
   const addNote = () => {
     const newNote = {
-      id: notes.length + 1,
+      id: latestId + 1,
       title: "",
       body: "",
     };
     setNotes([...notes, newNote]);
+    setLatestId(latestId + 1);
   };
 
   const handleDelete = (id: number) => {
